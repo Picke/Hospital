@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.bodeychuk.users.model.UserRole" table="roles">
+        <id name="id" type="int">
+            <column name="Id" length="11" />
+            <generator class="assigned" />
+        </id>
+        <property name="role" type="string">
+            <column name="Role" length="45" />
+        </property>
+
+        <join table="user_roles" inverse="true">
+            <key column="RoleId"/>
+            <many-to-one name="user" column="UserId" not-null="true"/>
+        </join>
+    </class>
+</hibernate-mapping>

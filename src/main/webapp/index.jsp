@@ -1,8 +1,9 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html lang="en">
 <head>
     <title>HOSPITAL</title>
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <link href="common/bootstrap/css/custom-bootstrap.css" rel="stylesheet" type="text/css"/>
+    <link href="/resources/common/bootstrap/css/custom-bootstrap.css" rel="stylesheet" type="text/css">
 
     <style type="text/css">
         html {
@@ -29,7 +30,7 @@
             text-indent: -10000em;
             width: 200px;
             height: 227px;
-            background: url(common/bootstrap/img/hospital-logo.png) no-repeat;
+            background: url(/resources/common/bootstrap/img/hospital-logo.png) no-repeat;
             margin: 0;
         }
 
@@ -122,13 +123,19 @@
 
 <div class="content">
     <div id="logo">&nbsp;</div>
-    <form action="" id="logonForm" name="logonForm">
+    <form action="<c:url value='/j_spring_security_check' />" method='POST' id="logonForm" name="logonForm">
         <div id="logoninfo_section">
             <ul>
                 <li><input type="text" id="username" name="username" autofocus placeholder="username"/></li>
                 <li><input class="pad-top-5" type="password" id="password" name="password" placeholder="password"/></li>
+                <c:if test="${not empty error}">
+                    <li><div class="error">${error}</div></li>
+                </c:if>
+                <c:if test="${not empty msg}">
+                    <li><div class="msg">${msg}</div></li>
+                </c:if>
                 <li>
-                    <button class="btn btn-primary pad-top-5" name="submit" id="submitlogon">Log In</button>
+                    <button class="btn btn-primary pad-top-5" name="submit"  id="submitlogon">Log In</button>
                 </li>
             </ul>
         </div>
