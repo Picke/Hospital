@@ -8,15 +8,15 @@
 
     <!-- enable use-expressions -->
     <http auto-config="true" use-expressions="true">
-        <intercept-url pattern="/" access="isAnonymous()" />
+        <intercept-url pattern="/login?success**" access="isAuthenticated()" />
         <intercept-url pattern="/administration/*" access="hasRole('Admin')" />
         <intercept-url pattern="/registration/*" access="hasRole('Registrar')" />
 
         <!-- access denied page -->
         <access-denied-handler error-page="/403" />
         <form-login
-                login-page="/"
-                authentication-success-handler-ref="hospitalAuthenticationSuccessHandler"
+                login-page="/login"
+                default-target-url="/login?success"
                 authentication-failure-url="/login?error"
                 username-parameter="username"
                 password-parameter="password" />

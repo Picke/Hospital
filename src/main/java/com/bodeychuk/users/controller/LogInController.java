@@ -1,5 +1,7 @@
 package com.bodeychuk.users.controller;
 
+import com.bodeychuk.users.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.LockedException;
 import org.springframework.stereotype.Controller;
@@ -12,13 +14,23 @@ import javax.servlet.http.HttpServletRequest;
 
 @Controller
 public class LogInController {
-    @RequestMapping(value =  "/", method = RequestMethod.GET)
-    public ModelAndView login(@RequestParam(value = "error", required = false) String error,
-                              @RequestParam(value = "logout", required = false) String logout, HttpServletRequest request) {
 
+    @Autowired
+    private UserService userService;
+
+    @RequestMapping(value =  {"", "/login"}, method = RequestMethod.GET)
+    public ModelAndView login(@RequestParam(value = "error", required = false) String error,
+                              @RequestParam(value = "logout", required = false) String logout,
+                              @RequestParam(value = "success", required = false) String success, HttpServletRequest request) {
         ModelAndView model = new ModelAndView();
         if (error != null) {
             model.addObject("error", getErrorMessage(request, "SPRING_SECURITY_LAST_EXCEPTION"));
+        } else {
+            try {
+                String roles = userService.getCurrentUserRoles();
+                model.addObject("roles", roles);
+            } catch (Exception e) {
+            }
         }
         model.setViewName("index");
         return model;

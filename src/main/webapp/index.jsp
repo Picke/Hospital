@@ -1,9 +1,10 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@  taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html lang="en">
 <head>
     <title>HOSPITAL</title>
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
     <link href="/resources/common/bootstrap/css/custom-bootstrap.css" rel="stylesheet" type="text/css">
+    <script src="/dependencies/jquery/jquery-latest.js"></script>
 
     <style type="text/css">
         html {
@@ -34,7 +35,7 @@
             margin: 0;
         }
 
-        li label, input[type="text"], input[type="password"] {
+        li label, input[type="text"], input[type="password"], select {
             width: 200px;
             height: 30px;
             color: black;
@@ -109,21 +110,17 @@
             font-size: 13px;
         }
 
-        select {
-            background: #fff;
-            width: 249px;
-        }
     </style>
 </head>
 
 <body>
-<div id="logoutheader" class="btn-group">
-    <a href="#" id="logout">Log Out</a>
-</div>
 
 <div class="content">
+    <div id="logoutheader" class="btn-group">
+        <a href="/j_spring_security_logout" id="logout">Log Out</a>
+    </div>
     <div id="logo">&nbsp;</div>
-    <form action="<c:url value='/j_spring_security_check' />" method='POST' id="logonForm" name="logonForm">
+    <form action="/j_spring_security_check" method='POST' id="logonForm" name="logonForm">
         <div id="logoninfo_section">
             <ul>
                 <li><input type="text" id="username" name="username" autofocus placeholder="username"/></li>
@@ -135,22 +132,43 @@
                     <li><div class="msg">${msg}</div></li>
                 </c:if>
                 <li>
-                    <button class="btn btn-primary pad-top-5" name="submit"  id="submitlogon">Log In</button>
+                    <button class="btn btn-primary pad-top-5" name="submit"  id="login">Log In</button>
                 </li>
             </ul>
         </div>
-        <!--<div id="facilities_section">-->
-            <!--<ul>-->
-                <!--<li><select class="pad-btm-5" id="facilities"></select></li>-->
-                <!--<li style="margin-top: -1px;"><select class="pad-btm-5" id="persona"></select></li>-->
-                <!--<li>-->
-                    <!--<button class="btn btn-primary" name="loadpage" id="loadpage">Go</button>-->
-                <!--</li>-->
-            <!--</ul>-->
-        <!--</div>-->
     </form>
+        <div id="roles_section" style="display: none;">
+            <ul>
+                <li style="margin-top: -1px;"><select class="pad-btm-5" id="userRoles"></select></li>
+                <li>
+                    <button class="btn btn-primary" name="loadpage" id="loadpage" onclick="navigate()">Go</button>
+                </li>
+            </ul>
+        </div>
     <div id="error" class="error"></div>
 </div>
 
 </body>
+
+<c:if test="${not empty roles}">
+<script type="text/javascript">
+    var init = function () {
+        $("#logoninfo_section").hide();
+        $("#roles_section").show();
+        $('#logonForm').removeAttr("action");
+        $('#logonForm').removeAttr("method");
+        $("#logoutheader").show();
+        $.each(${roles}, function(index, role) {
+            $("#userRoles").append("<option value=" + role.authority + ">" + role.authority + "</option>");
+        });
+    };
+
+    var navigate = function () {
+        var path = $('#userRoles').val() == "Admin" ? "/administration" : "/registration";
+        window.location.href = window.location.origin + path
+    };
+
+    init();
+</script>
+</c:if>
 </html>

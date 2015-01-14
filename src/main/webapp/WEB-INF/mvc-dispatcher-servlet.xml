@@ -17,5 +17,7 @@
     </bean>
 
     <mvc:resources mapping="/resources/**" location="resources/" />
+
+    <mvc:resources mapping="/dependencies/**" location="dependencies/" />
     <mvc:annotation-driven />
 </beans>
