@@ -13,7 +13,7 @@
 
         <join table="user_roles" inverse="true">
             <key column="RoleId"/>
-            <many-to-one name="user" column="UserId" not-null="true" fetch="select"/>
+            <many-to-one name="user" column="UserId" not-null="true"/>
         </join>
     </class>
 </hibernate-mapping>

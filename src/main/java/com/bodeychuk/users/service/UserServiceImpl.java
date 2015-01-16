@@ -12,7 +12,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.Collection;
 import java.util.HashSet;
-import java.util.Set;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -40,12 +39,8 @@ public class UserServiceImpl implements UserService {
     @Override
     public void saveUser(UserDto userDto) {
         com.bodeychuk.users.model.User user = new com.bodeychuk.users.model.User(userDto.getUsername(), userDto.getPassword(), true, new HashSet<UserRole>());
-        Set<UserRole> userRoles = new HashSet<>();
-        for (String role : userDto.getUserRole()) {
-            userRoles.add(new UserRole(role, user));
-        }
-        user.setUserRole(userRoles);
         userDao.saveUser(user);
+        userDao.saveUserRoles(user, userDto.getUserRole());
 
 
     }
