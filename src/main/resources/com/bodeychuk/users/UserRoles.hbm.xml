@@ -5,7 +5,7 @@
     <class name="com.bodeychuk.users.model.UserRole" table="roles">
         <id name="id" type="int">
             <column name="Id" length="11" />
-            <generator class="assigned" />
+            <generator class="increment" />
         </id>
         <property name="role" type="string">
             <column name="Role" length="45" />
@@ -13,7 +13,7 @@
 
         <join table="user_roles" inverse="true">
             <key column="RoleId"/>
-            <many-to-one name="user" column="UserId" not-null="true"/>
+            <many-to-one name="user" column="UserId" not-null="true" fetch="select"/>
         </join>
     </class>
 </hibernate-mapping>

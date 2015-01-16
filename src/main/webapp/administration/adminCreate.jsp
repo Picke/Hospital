@@ -11,6 +11,10 @@
     <a class="close" onclick="hideAlert()">x</a>
     Please fill all required fields
 </div>
+<div id="passwords-does-not-match-alert" style="display: none" class="alert alert-danger alert-dismissable">
+    <a class="close" onclick="hideAlert()">x</a>
+    Passwords does not match
+</div>
 <c:if test="${not empty username}">
     <div class="alert alert-success alert-dismissable">
         <a class="close" onclick="hideAlert()">x</a>
@@ -37,7 +41,7 @@
                                 </label>
 
                                 <div class="controls">
-                                    <form:input cssClass="span5" id="username" maxlength="10" path="username" />
+                                    <form:input id="username" maxlength="10" path="username" />
                                 </div>
                             </div>
                             <div class="control-group">
@@ -47,7 +51,7 @@
                                 </label>
 
                                 <div class="controls">
-                                    <form:input cssClass="span5" id="password" title=""
+                                    <form:password id="password" title=""
                                            maxlength="10"  path="password"/>
                                 </div>
                             </div>
@@ -58,7 +62,7 @@
                                 </label>
 
                                 <div class="controls">
-                                    <input type="text" class="span5" id="repeat-password"
+                                    <input type="password" id="repeat-password"
                                            maxlength="10">
                                 </div>
                             </div>
@@ -69,8 +73,11 @@
                                 </label>
 
                                 <div class="controls">
-                                    <input type="text" class="span5" id="roles"
-                                           maxlength="10">
+                                    <form:select size="2" multiple="true" id="roles" path = "userRole">
+                                        <option value="Admin">Admin</option>
+                                        <option value="Registrar">Registrar</option>
+                                    </form:select>
+
                                 </div>
                             </div>
                             <div class="control-group ">
@@ -107,18 +114,46 @@
     }
 
     $("#create-btn").on("click", function () {
-        if ($("#username").val() == "" || $("#password").val() == "" || $("#repeat-password").val() == "" ||
-                $("#roles").val() == "") {
-            $("#validation-alert").show();
-        } else {
-            $("#validation-alert").hide();
+        if (validForm()) {
             $("#create-user-form").submit();
         }
-    })
+    });
+
+    var validForm = function () {
+        var valid = true;
+        $.each($(".controls"), function (index, field) {
+            if (!$($(field).children()[0]).val()) {
+                $(field).closest(".control-group").addClass("error");
+                valid = false;
+            }
+        });
+        if (valid) {
+            if ($("#password").val() != $("#repeat-password").val()) {
+                $("#passwords-does-not-match-alert").show();
+                $("#repeat-password").closest(".control-group").addClass("error");
+                return false;
+            } else {
+                return true;
+            }
+        } else {
+            $("#validation-alert").show();
+            return false;
+        }
+    }
 
     var hideAlert = function () {
             $(".alert").slideUp("slow");
     }
+
+    $.each($(".controls"), function (index, field) {
+        var el = $($(field).children()[0]);
+        var elGroup = el.closest(".control-group")
+        el.on("focus", function () {
+            if (elGroup.hasClass("error")) {
+                elGroup.removeClass("error")
+            }
+        });
+    });
 
     init();
 </script>

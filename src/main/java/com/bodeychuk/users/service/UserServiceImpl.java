@@ -1,6 +1,8 @@
 package com.bodeychuk.users.service;
 
 import com.bodeychuk.users.dao.UserDao;
+import com.bodeychuk.users.dao.UserDto;
+import com.bodeychuk.users.model.UserRole;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
@@ -9,6 +11,8 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -20,7 +24,7 @@ public class UserServiceImpl implements UserService {
     public String getCurrentUserRoles() throws Exception{
         ObjectMapper mapper = new ObjectMapper();
 
-        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        org.springframework.security.core.userdetails.User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         Collection<GrantedAuthority> authorities = user.getAuthorities();
 
         String roles = "";
@@ -31,5 +35,18 @@ public class UserServiceImpl implements UserService {
         }
 
         return roles;
+    }
+
+    @Override
+    public void saveUser(UserDto userDto) {
+        com.bodeychuk.users.model.User user = new com.bodeychuk.users.model.User(userDto.getUsername(), userDto.getPassword(), true, new HashSet<UserRole>());
+        Set<UserRole> userRoles = new HashSet<>();
+        for (String role : userDto.getUserRole()) {
+            userRoles.add(new UserRole(role, user));
+        }
+        user.setUserRole(userRoles);
+        userDao.saveUser(user);
+
+
     }
 }

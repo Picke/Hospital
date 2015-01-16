@@ -18,6 +18,13 @@ public class User {
         this.userRole = userRole;
     }
 
+    public User(String username, String password, boolean enabled, Set<UserRole> userRole) {
+        this.username = username;
+        this.password = password;
+        this.enabled = enabled;
+        this.userRole = userRole;
+    }
+
     public User() {
     }
 

@@ -1,4 +1,4 @@
-package com.bodeychuk.users.controller;
+package com.bodeychuk.registration;
 
 import org.springframework.stereotype.Controller;
 

@@ -5,7 +5,7 @@
     <class name="com.bodeychuk.users.model.User" table="users">
         <id name="id" type="int">
             <column name="id" length="11" />
-            <generator class="assigned" />
+            <generator class="increment" />
         </id>
         <property name="username" type="string">
             <column name="username" length="45" />
@@ -14,11 +14,11 @@
             <column name="password" length="45" not-null="true" />
         </property>
         <set name="userRole" table="user_roles"
-             inverse="false" lazy="true" fetch="select" cascade="all" >
+             inverse="true" lazy="true" fetch="select" cascade="all" >
             <key>
                 <column name="userId" not-null="true" />
             </key>
-            <many-to-many entity-name="com.bodeychuk.users.model.UserRole">
+            <many-to-many entity-name="com.bodeychuk.users.model.UserRole" fetch="select">
                 <column name="roleId" not-null="true" />
             </many-to-many>
         </set>

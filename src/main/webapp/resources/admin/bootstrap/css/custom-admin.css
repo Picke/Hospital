@@ -6075,6 +6075,23 @@ button.close {
     -o-box-shadow: 0px 2px 0px #b7b7b7;
     -ms-box-shadow: 0px 2px 0px #b7b7b7;
 }
+.control-group.error > label,
+.error > label,
+.control-group.error .help-block,
+.error .help-block,
+.control-group.error .help-inline,
+.error .help-inline {
+    color: #b94a48;
+}
+.control-group.error input,
+.error input,
+.control-group.error select,
+.error select,
+.control-group.error textarea,
+.error textarea {
+    color: #b94a48;
+    border-color: #b94a48;
+}
 .componentLinks {
     text-decoration: none;
     cursor: pointer;

@@ -1,7 +1,8 @@
 package com.bodeychuk.administration.controller;
 
 import com.bodeychuk.users.dao.UserDto;
-import com.bodeychuk.users.model.User;
+import com.bodeychuk.users.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,6 +12,9 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 @RequestMapping(value =  "/administration")
 public class AdministrationController {
+    @Autowired
+    UserService userService;
+
     @RequestMapping(value =  "", method = RequestMethod.GET)
     public ModelAndView administration() {
         ModelAndView model = new ModelAndView();
@@ -29,9 +33,10 @@ public class AdministrationController {
     }
 
     @RequestMapping(value =  "/create", method = RequestMethod.POST)
-    public ModelAndView add(@ModelAttribute("user") User user) {
+    public ModelAndView add(@ModelAttribute("user") UserDto userDto) {
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.addObject("username",user.getUsername());
+        userService.saveUser(userDto);
+        modelAndView.addObject("username",userDto.getUsername());
         modelAndView.setViewName("adminCreate");
         return modelAndView;
     }
