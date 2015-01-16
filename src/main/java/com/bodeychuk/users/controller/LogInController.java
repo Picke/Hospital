@@ -19,9 +19,7 @@ public class LogInController {
     private UserService userService;
 
     @RequestMapping(value =  {"", "/login"}, method = RequestMethod.GET)
-    public ModelAndView login(@RequestParam(value = "error", required = false) String error,
-                              @RequestParam(value = "logout", required = false) String logout,
-                              @RequestParam(value = "success", required = false) String success, HttpServletRequest request) {
+    public ModelAndView login(@RequestParam(value = "error", required = false) String error, HttpServletRequest request) {
         ModelAndView model = new ModelAndView();
         if (error != null) {
             model.addObject("error", getErrorMessage(request, "SPRING_SECURITY_LAST_EXCEPTION"));
@@ -60,5 +58,14 @@ public class LogInController {
         model.setViewName("403");
         return model;
 
+    }
+
+
+
+    @RequestMapping(value =  "/registration", method = RequestMethod.GET)
+    public ModelAndView registration() {
+        ModelAndView model = new ModelAndView();
+        model.setViewName("registrarHome");
+        return model;
     }
 }

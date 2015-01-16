@@ -43,15 +43,28 @@ audio:not([controls]) {
 template {
   display: none;
 }
-a {
-  background-color: transparent;
+a,
+.link {
+    color: #000000;
+    text-decoration: none;
+    transition: border-bottom-color 0.05s linear;
 }
+a:visited,
+.link:visited,
 a:active,
-a:hover {
-  outline: 0;
+.link:active,
+a:focus,
+.link:focus,
+a:hover,
+.link:hover,
+a:link,
+.link:link {
+    color: #000000;
+    text-decoration: none;
 }
-abbr[title] {
-  border-bottom: 1px dotted;
+a:hover,
+.link:hover {
+    border-bottom: 1px dotted;
 }
 b,
 strong {
@@ -219,20 +232,6 @@ th {
     background: transparent !important;
     -webkit-box-shadow: none !important;
             box-shadow: none !important;
-  }
-  a,
-  a:visited {
-    text-decoration: underline;
-  }
-  a[href]:after {
-    content: " (" attr(href) ")";
-  }
-  abbr[title]:after {
-    content: " (" attr(title) ")";
-  }
-  a[href^="#"]:after,
-  a[href^="javascript:"]:after {
-    content: "";
   }
   pre,
   blockquote {
@@ -931,20 +930,6 @@ textarea {
   font-family: inherit;
   font-size: inherit;
   line-height: inherit;
-}
-a {
-  color: #337ab7;
-  text-decoration: none;
-}
-a:hover,
-a:focus {
-  color: #23527c;
-  text-decoration: underline;
-}
-a:focus {
-  outline: thin dotted;
-  outline: 5px auto -webkit-focus-ring-color;
-  outline-offset: -2px;
 }
 figure {
   margin: 0;

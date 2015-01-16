@@ -13,10 +13,27 @@
         <div class="row">
             <div class="span16">
                 <div id="adminTile" class="tileLarge">
-                    <h2></h2>
-                    <!-- blank h2 for titles to be attached-->
                     <div id="main">
-                        <!-- views go here -->
+                        <div class="span15">
+                            <div id="divAdministrationPanel" class="row pad-top-10">
+                                <div style="float:left" id="divComponents" class="span2">
+                                    <label class="pull-right">Components</label>
+                                </div>
+                                <div style="float:left" class="span13">
+                                    <div id="divAdministrationComponents" class="sub-header-big">
+                                        <div id="link_createUser">
+                                            <a class="componentLinks" href="create">Create User</a>
+                                        </div>
+                                        <div id="link_deleteUsers">
+                                            <a class="componentLinks">Delete Users</a>
+                                        </div>
+                                        <div id="link_assignRoles">
+                                            <a class="componentLinks">Assign Roles</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -27,7 +44,5 @@
 <div id="div-tmpl-holder">
 </div>
 
-
-</body>
 </body>
 </html>
