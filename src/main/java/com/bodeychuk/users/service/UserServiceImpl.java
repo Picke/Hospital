@@ -66,4 +66,10 @@ public class UserServiceImpl implements UserService {
         }
         return json;
     }
+
+    @Override
+    public void deleteUser(String username) {
+        User user = userDao.findByUserName(username);
+        userDao.deleteUser(user);
+    }
 }

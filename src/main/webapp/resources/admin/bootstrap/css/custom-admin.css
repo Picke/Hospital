@@ -212,11 +212,16 @@ optgroup {
   font-weight: bold;
 }
 table {
-  border-spacing: 2;
-  border-collapse: collapse;
+    font-family: "Segoe UI Light";
+    border-spacing: 2;
+    border-collapse: collapse;
+    font-size: 14px;
 }
 th {
   padding: 4;
+}
+td {
+    padding-left: 8px;
 }
 /*! Source: https://github.com/h5bp/html5-boilerplate/blob/master/src/css/main.css */
 @media print {

@@ -54,4 +54,9 @@ public class UserDaoImpl implements UserDao{
         return sessionFactory.getCurrentSession().createQuery("from User").list();
     }
 
+    @Override
+    public void deleteUser(User user) {
+        sessionFactory.getCurrentSession().delete(user);
+    }
+
 }

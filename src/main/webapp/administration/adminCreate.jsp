@@ -73,7 +73,7 @@
                                 </label>
 
                                 <div class="controls">
-                                    <form:select size="2" multiple="true" id="roles" path = "userRole">
+                                    <form:select size="2" multiple="true" id="roles" path = "roles">
                                         <option value="Admin">Admin</option>
                                         <option value="Registrar">Registrar</option>
                                     </form:select>

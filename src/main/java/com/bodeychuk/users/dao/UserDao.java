@@ -10,5 +10,5 @@ public interface UserDao {
     void saveUser(User user);
     void saveUserRoles(User user, Set<String> userRoles);
     List<User> getAllUsers();
-
+    void deleteUser(User user);
 }

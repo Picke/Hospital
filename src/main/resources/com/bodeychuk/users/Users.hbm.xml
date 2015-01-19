@@ -14,7 +14,7 @@
             <column name="password" length="45" not-null="true" />
         </property>
         <set name="userRole" table="user_roles" lazy="false"
-             cascade="all" fetch="select">
+             cascade="persist" fetch="select">
             <key>
                 <column name="userId" not-null="true" />
             </key>
