@@ -4,5 +4,6 @@ import com.bodeychuk.users.dao.UserDto;
 
 public interface UserService {
     public String getCurrentUserRoles() throws Exception;
-    void saveUser(UserDto userDto);
+    public void saveUser(UserDto userDto);
+    public String getAllUsers();
 }

@@ -40,4 +40,15 @@ public class AdministrationController {
         modelAndView.setViewName("adminCreate");
         return modelAndView;
     }
+
+    @RequestMapping(value =  "/users", method = RequestMethod.GET)
+    public ModelAndView list() {
+        ModelAndView modelAndView = new ModelAndView();
+
+        String users = userService.getAllUsers();
+
+        modelAndView.addObject("users", users);
+        modelAndView.setViewName("users");
+        return modelAndView;
+    }
 }

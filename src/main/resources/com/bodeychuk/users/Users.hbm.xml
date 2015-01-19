@@ -13,8 +13,8 @@
         <property name="password" type="string">
             <column name="password" length="45" not-null="true" />
         </property>
-        <set name="userRole" table="user_roles"
-             inverse="true" lazy="true" fetch="select" cascade="all" >
+        <set name="userRole" table="user_roles" lazy="false"
+             cascade="all" fetch="select">
             <key>
                 <column name="userId" not-null="true" />
             </key>

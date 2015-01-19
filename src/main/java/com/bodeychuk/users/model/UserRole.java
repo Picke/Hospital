@@ -4,20 +4,17 @@ public class UserRole {
     private int id;
     private String role;
 
-    private User user;
 
     public UserRole() {
     }
 
-    public UserRole(String role, User user) {
+    public UserRole(String role) {
         this.role = role;
-        this.user = user;
     }
 
     public UserRole(int id, String role, User user) {
         this.id = id;
         this.role = role;
-        this.user = user;
     }
 
     public int getId() {
@@ -36,11 +33,4 @@ public class UserRole {
         this.role = role;
     }
 
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
 }

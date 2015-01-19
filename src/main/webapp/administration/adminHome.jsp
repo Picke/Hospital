@@ -21,14 +21,11 @@
                                 </div>
                                 <div style="float:left" class="span13">
                                     <div id="divAdministrationComponents" class="sub-header-big">
-                                        <div id="link_createUser">
+                                        <div id="link_create-user">
                                             <a class="componentLinks" href="create">Create User</a>
                                         </div>
-                                        <div id="link_deleteUsers">
-                                            <a class="componentLinks">Delete Users</a>
-                                        </div>
-                                        <div id="link_assignRoles">
-                                            <a class="componentLinks">Assign Roles</a>
+                                        <div id="link_user-list">
+                                            <a class="componentLinks" href="users">Users List</a>
                                         </div>
                                     </div>
                                 </div>

@@ -6,13 +6,13 @@ import java.util.Set;
 public class UserDto {
     private String username;
     private String password;
-    private Set<String> userRole  = new HashSet<>(0);
+    private Set<String> roles  = new HashSet<>(0);
 
 
-    public UserDto(String username, String password, Set<String> userRole) {
+    public UserDto(String username, String password, Set<String> roles) {
         this.username = username;
         this.password = password;
-        this.userRole = userRole;
+        this.roles = roles;
     }
 
     public UserDto() {
@@ -34,11 +34,11 @@ public class UserDto {
         this.password = password;
     }
 
-    public Set<String> getUserRole() {
-        return userRole;
+    public Set<String> getRoles() {
+        return roles;
     }
 
-    public void setUserRole(Set<String> userRole) {
-        this.userRole = userRole;
+    public void setRoles(Set<String> roles) {
+        this.roles = roles;
     }
 }
