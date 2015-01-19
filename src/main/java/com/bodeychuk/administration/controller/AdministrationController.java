@@ -36,9 +36,13 @@ public class AdministrationController {
     @RequestMapping(value =  "/create", method = RequestMethod.POST)
     public ModelAndView add(@ModelAttribute("user") UserDto userDto) {
         ModelAndView modelAndView = new ModelAndView();
+
         userService.saveUser(userDto);
+        String users = userService.getAllUsers();
+
+        modelAndView.addObject("users", users);
         modelAndView.addObject("username",userDto.getUsername());
-        modelAndView.setViewName("adminCreate");
+        modelAndView.setViewName("userList");
         return modelAndView;
     }
 
@@ -49,7 +53,7 @@ public class AdministrationController {
         String users = userService.getAllUsers();
 
         modelAndView.addObject("users", users);
-        modelAndView.setViewName("users");
+        modelAndView.setViewName("userList");
         return modelAndView;
     }
 
@@ -59,7 +63,7 @@ public class AdministrationController {
 
         userService.deleteUser(username);
 
-        modelAndView.setViewName("users");
+        modelAndView.setViewName("userList");
         return modelAndView;
     }
 }

@@ -66,7 +66,7 @@
                                            maxlength="10">
                                 </div>
                             </div>
-                            <div class="control-group pad-btm-30">
+                            <div class="control-group">
                                 <label class="control-label" id="roles-label">
                                     <span class="validation-required-prefix">*</span>
                                     Roles
