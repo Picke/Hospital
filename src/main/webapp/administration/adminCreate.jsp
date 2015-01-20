@@ -1,5 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <html>
 <head>
     <title>Hospital</title>
@@ -7,13 +7,9 @@
     <script src="/dependencies/jquery/jquery-latest.js"></script>
 </head>
 <body>
-<div id="validation-alert" style="display: none" class="alert alert-danger alert-dismissable">
+<div id="error-alert" style="display: none" class="alert alert-danger alert-dismissable">
     <a class="close" onclick="hideAlert()">x</a>
-    Please fill all required fields
-</div>
-<div id="passwords-does-not-match-alert" style="display: none" class="alert alert-danger alert-dismissable">
-    <a class="close" onclick="hideAlert()">x</a>
-    Passwords does not match
+
 </div>
 <c:if test="${not empty username}">
     <div class="alert alert-success alert-dismissable">
@@ -21,18 +17,24 @@
         User ${username} saved succesfully
     </div>
 </c:if>
-<form:form id="create-user-form" method="POST" action="/administration/create" modelAttribute="user">
-    <div class="container">
-        <div class="row pad-btm-10">
-            <div class="span16"><h1 class="pull-left">administration panel</h1></div>
-        </div>
-        <div class="row">
-            <div class="span16">
-                <div id="adminTile" class="tileLarge">
+<c:if test="${not empty error}">
+    <div class="alert alert-danger alert-dismissable">
+        <a class="close" onclick="hideAlert()">x</a>
+            ${error}
+    </div>
+</c:if>
 
-                    <h3 class="pad-left-10">user creation</h3>
+<div class="container">
+    <%@ include file="adminHeader.jsp" %>
+    <div class="row">
+        <div class="span14">
+            <div id="adminTile" class="tileLarge">
 
-                    <div class="span15 row">
+                <h3 class="pad-left-10">user creation</h3>
+
+                <div class="span15 row">
+                    <form:form id="create-user-form" method="POST" action="/administration/create"
+                               modelAttribute="user">
                         <div id="divRegistrationLabelComponents" class="pad-top-10">
                             <div class="control-group">
                                 <label class="control-label" id="username-label">
@@ -41,7 +43,7 @@
                                 </label>
 
                                 <div class="controls">
-                                    <form:input id="username" maxlength="10" path="username" />
+                                    <form:input id="username" maxlength="10" path="username"/>
                                 </div>
                             </div>
                             <div class="control-group">
@@ -52,7 +54,7 @@
 
                                 <div class="controls">
                                     <form:password id="password" title=""
-                                           maxlength="10"  path="password"/>
+                                                   maxlength="10" path="password"/>
                                 </div>
                             </div>
                             <div class="control-group">
@@ -73,7 +75,7 @@
                                 </label>
 
                                 <div class="controls">
-                                    <form:select size="2" multiple="true" id="roles" path = "roles">
+                                    <form:select size="2" multiple="true" id="roles" path="roles">
                                         <option value="Admin">Admin</option>
                                         <option value="Registrar">Registrar</option>
                                     </form:select>
@@ -88,12 +90,12 @@
                                 </button>
                             </div>
                         </div>
-                    </div>
+                    </form:form>
                 </div>
             </div>
         </div>
     </div>
-</form:form>
+</div>
 
 <div id="div-tmpl-holder">
 </div>
@@ -102,7 +104,7 @@
 </html>
 
 <script type="text/javascript">
-    var init = function() {
+    var init = function () {
         $("#username").val("");
         $("#password").val("");
         $("#repeat-password").val("");
@@ -129,20 +131,23 @@
         });
         if (valid) {
             if ($("#password").val() != $("#repeat-password").val()) {
-                $("#passwords-does-not-match-alert").show();
+                $("#error-alert").show().text("Passwords does not match");
                 $("#repeat-password").closest(".control-group").addClass("error");
                 return false;
             } else {
                 return true;
             }
         } else {
-            $("#validation-alert").show();
+            $(".alert").hide();
+            $("#error-alert").text().indexOf("Please fill all required fields") == -1 ?
+                    $("#error-alert").show().append("Please fill all required fields") :
+                    $("#error-alert").show()
             return false;
         }
     }
 
     var hideAlert = function () {
-            $(".alert").slideUp("slow");
+        $(".alert").slideUp("slow");
     }
 
     $.each($(".controls"), function (index, field) {

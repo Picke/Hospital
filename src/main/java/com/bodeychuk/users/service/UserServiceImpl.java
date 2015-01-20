@@ -72,4 +72,10 @@ public class UserServiceImpl implements UserService {
         User user = userDao.findByUserName(username);
         userDao.deleteUser(user);
     }
+
+    @Override
+    public boolean exists(String username) {
+        return userDao.findByUserName(username) != null;
+
+    }
 }

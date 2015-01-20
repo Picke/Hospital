@@ -7,4 +7,5 @@ public interface UserService {
     public void saveUser(UserDto userDto);
     public String getAllUsers();
     public void deleteUser(String username);
+    public boolean exists(String username);
 }

@@ -37,12 +37,14 @@ public class AdministrationController {
     public ModelAndView add(@ModelAttribute("user") UserDto userDto) {
         ModelAndView modelAndView = new ModelAndView();
 
-        userService.saveUser(userDto);
-        String users = userService.getAllUsers();
+        if (userService.exists(userDto.getUsername())) {
+            modelAndView.addObject("error", "Username " + userDto.getUsername() + " already exists");
+        } else {
+            userService.saveUser(userDto);
+            modelAndView.addObject("username",userDto.getUsername());
+        }
 
-        modelAndView.addObject("users", users);
-        modelAndView.addObject("username",userDto.getUsername());
-        modelAndView.setViewName("userList");
+        modelAndView.setViewName("adminCreate");
         return modelAndView;
     }
 
@@ -53,7 +55,7 @@ public class AdministrationController {
         String users = userService.getAllUsers();
 
         modelAndView.addObject("users", users);
-        modelAndView.setViewName("userList");
+        modelAndView.setViewName("adminUserList");
         return modelAndView;
     }
 

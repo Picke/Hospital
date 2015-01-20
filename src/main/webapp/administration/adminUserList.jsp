@@ -8,27 +8,20 @@
     <script src="/dependencies/bootstrap-confirmation/bootstrap-confirmation.js"></script>
 </head>
 <body>
-<c:if test="${not empty username}">
-    <div class="alert alert-success alert-dismissable">
-        <a class="close" onclick="hideAlert()">x</a>
-        User ${username} saved succesfully
-    </div>
-</c:if>
 <div class="container">
-    <div class="row pad-btm-10">
-        <div class="span16"><h1 class="pull-left">users</h1></div>
-    </div>
+    <%@ include file="adminHeader.jsp" %>
     <div class="row">
-        <div class="span16">
+        <div class="span14">
             <div id="adminTile" class="tileLarge" style="padding-bottom: 10px">
                 <div id="main">
                     <table id="users-table" class="pad-left-10">
                         <tr>
                             <th style   ="width : 120px">Username</th>
                             <th>Authorities</th>
+                            <th>&nbsp</th>
                         <tr>
                     </table>
-                    <button class="btn pad-left-10 pad-top-10" id="back-btn" onclick="cancelButtonHandler()">Back</button>
+                    <button class="btn pad-left-10 pad-top-10" id="back-btn" onclick="cancelButtonHandler()">Cancel</button>
                 </div>
             </div>
         </div>
@@ -64,17 +57,13 @@
                         });
                     }
                 });
-                $(this).confirmation('show');
             });
+            $($('#users-table > tbody:last > tr:last .btn')[0]).trigger('click');
         });
     };
 
     var deleteUser = function (username) {
         $.post("users", {username: username});
-    };
-
-    var hideAlert = function () {
-        $(".alert").slideUp("slow");
     };
 
     var cancelButtonHandler = function () {
