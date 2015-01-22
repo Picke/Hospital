@@ -1,4 +1,8 @@
 var PR = PR || {};
+PR.Views = {};
+
+PR.Views.BaseView = function () {
+};
 
 PR.createNS = function (namespace) {
     var parts = namespace.split('.'), parent = PR, i;
@@ -13,7 +17,4 @@ PR.createNS = function (namespace) {
         parent = parent[parts[i]];
     }
     return parent;
-};
-
-PR.Views.BaseView = function () {
 };

@@ -6,40 +6,46 @@
     <script src="/dependencies/jquery/jquery-latest.js" type="text/javascript"></script>
     <script src="/dependencies/underscore/underscore.js" type="text/javascript"></script>
     <script src="/dependencies/backbone/backbone.js" type="text/javascript"></script>
+    <script src="/dependencies/jsRender/jsrender.js" type="text/javascript"></script>
+
     <script src="/common/js/lib/Namespaces.js" type="text/javascript"></script>
     <script src="/common/js/lib/PRCore.js" type="text/javascript"></script>
+    <script src="/common/js/lib/PRCore.Utils.js" type="text/javascript"></script>
+    <script src="/common/js/lib/PRCore.Ajax.js" type="text/javascript"></script>
+    <script src="/common/js/lib/PRCore.Templates.js" type="text/javascript"></script>
+
+    <script src="/registration/js/views/BaseView.js" type="text/javascript"></script>
+    <script src="/registration/js/views/HomePageView.js" type="text/javascript"></script>
+
+    <script src="/registration/require.templates.js" type="text/javascript"></script>
 
     <script src="/registration/js/repositories/NewEncounterRepository.js" type="text/javascript"></script>
+    <script src="/registration/js/controllers/HomePageController.js" type="text/javascript"></script>
     <script src="/registration/js/controllers/EncounterController.js" type="text/javascript"></script>
     <script src="/registration/js/App_Config.js" type="text/javascript"></script>
 
 </head>
 <body>
-    <div class="container">
-        <div class="row">
-            <div class="span16">
-                <div id="adminTile" class="tileLarge">
-                    <button id="add-patient-btn" class="btn">Add Patient</button>
-                    <h2></h2>
-                    <!-- blank h2 for titles to be attached-->
-                    <div id="main">
-                        <!-- views go here -->
-                    </div>
-                </div>
-            </div>
-        </div>
+<div id="container" class="container">
+    <div class="row">
+        <div id="ErrorBar"></div>
     </div>
-
-<div id="div-tmpl-holder">
+    <div id="headercontainer" class="row pad-btm-10"></div>
+    <div id="toolbar" class="row pad-btm-10"></div>
+    <div id="main" class="pad-btm-10 row">
+        <!-- screen views go here -->
+    </div>
+    <div id="applets">
+    </div>
 </div>
+
 <script type="text/javascript">
+    PR.App();
     $('#add-patient-btn').on('click', function () {
-        PR.App();
-        PR.controller.navigate('#new-encounter', {trigger  : true});
+        PR.controller.navigate('#new-encounter', {trigger: true});
     });
 </script>
 
 
-</body>
 </body>
 </html>

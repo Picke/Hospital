@@ -6,6 +6,7 @@ PR.App = function () {
     var errorBar,
 
         encounterCtrl = new PR.Controllers.EncounterController(),
+        homePageCtrl = new PR.Controllers.HomePageController()
 
         PRController = Backbone.Router.extend({
             _currentView: null,
@@ -15,7 +16,9 @@ PR.App = function () {
 
             routes: {
                 "new-encounter": "newEncounter",
-                "patients": "patientList"
+                "patients": "patientList",
+                "*path": "home",
+                "*path/:tab": "home"
             },
 
             initialize: function () {
@@ -52,6 +55,15 @@ PR.App = function () {
                 }
             },
 
+            home: function (tab) {
+                homePageCtrl.loadHomePageTemplates($.proxy(function() {
+                    var homePageView = homePageCtrl.homePageView();
+                    this._preDestroyCurrentView();
+                    homePageView.render();
+                    this._routeChanged({view: homePageView, routeHandler: "patientList"});
+                }, this));
+            },
+
             newEncounter: function (patientId, previousEncounterId) {
                 var repo = PR.Repositories.NewEncounterRepository();
 
@@ -65,10 +77,23 @@ PR.App = function () {
                     this._preDestroyCurrentView();
                     this._routeChanged({view: newEncounterView, routeHandler: 'newEncounter'});
                 }, this);
-                homePageView.closeSubViewsPopups();
-                var medicalServiceView = encounterCtrl.medicalServiceCodeView(patientId, previousEncounterId, onNextBtnClick, this._currentView);
-                this._routeChanged({view: medicalServiceView, routeHandler: 'newEncounter'}); // we need the view (to remove it), for case when used browser back from MedicalServiceCodeView
-                medicalServiceView.render();
+//                homePageView.closeSubViewsPopups();
+//                var medicalServiceView = encounterCtrl.medicalServiceCodeView(patientId, previousEncounterId, onNextBtnClick, this._currentView);
+//                this._routeChanged({view: medicalServiceView, routeHandler: 'newEncounter'}); // we need the view (to remove it), for case when used browser back from MedicalServiceCodeView
+//                medicalServiceView.render();
+            },
+
+            _routeChanged: function (e) {
+//                this._clearHeader();
+//                this._unlockModalUI(e.view);
+                this._currentRouteHandler = e.routeHandler;
+                this._currentView = e.view;
+            },
+
+            _preDestroyCurrentView: function () {
+                if (this._currentView && this._currentView.preDestroy) {
+                    this._currentView.preDestroy();
+                }
             }
         });
     PR.controller = new PRController();
