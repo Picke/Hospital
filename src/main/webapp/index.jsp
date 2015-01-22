@@ -164,7 +164,7 @@
     };
 
     var navigate = function () {
-        var path = $('#userRoles').val() == "Admin" ? "/administration" : "/registration";
+        var path = $('#userRoles').val() == "Admin" ? "/administration" : "/registration/#";
         window.location.href = window.location.origin + path
     };
 

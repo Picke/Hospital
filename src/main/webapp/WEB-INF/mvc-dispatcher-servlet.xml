@@ -19,5 +19,9 @@
     <mvc:resources mapping="/resources/**" location="resources/" />
 
     <mvc:resources mapping="/dependencies/**" location="dependencies/" />
+
+    <mvc:resources mapping="/common/**" location="common/" />
+
+    <mvc:resources mapping="/registration/**" location="registration/" />
     <mvc:annotation-driven />
 </beans>
