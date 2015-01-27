@@ -10,7 +10,7 @@
     <div class="row">
         <div class="span14">
             <div id="adminTile" class="tileLarge">
-                <div id="main">
+                <div id="main" style="margin-left: 0px">
                     <div class="span15">
                         <div id="divAdministrationPanel" class="row pad-top-10">
                             <div style="float:left" id="divComponents" class="span2">

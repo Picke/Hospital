@@ -3,6 +3,10 @@
 <head>
     <title>Hospital</title>
     <link href="/resources/admin/bootstrap/css/custom-admin.css" rel="stylesheet" type="text/css">
+
+    <link rel="stylesheet/less" type="text/css" href="/resources/admin/font-awesome-4.3.0/less/icons.less" />
+    <link rel="stylesheet/less" type="text/css" href="/resources/admin/font-awesome-4.3.0/less/variables.less" />
+
     <script src="/dependencies/jquery/jquery-latest.js" type="text/javascript"></script>
     <script src="/dependencies/underscore/underscore.js" type="text/javascript"></script>
     <script src="/dependencies/backbone/backbone.js" type="text/javascript"></script>
@@ -16,6 +20,8 @@
 
     <script src="/registration/js/views/BaseView.js" type="text/javascript"></script>
     <script src="/registration/js/views/HomePageView.js" type="text/javascript"></script>
+    <script src="/registration/js/views/GlobalNavView.js" type="text/javascript"></script>
+    <script src="/registration/js/views/NewEncounterView.js" type="text/javascript"></script>
 
     <script src="/registration/require.templates.js" type="text/javascript"></script>
 

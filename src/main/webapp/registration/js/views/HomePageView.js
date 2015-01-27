@@ -8,7 +8,7 @@ PR.Views.HomePageView = PR.Views.BaseView.extend({
 
     _build: function () {
         var html = $.render.homePageTemplate();
-        this.setHtml(html)
+        this.setHtml(html);
     }
 
 });

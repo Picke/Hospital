@@ -27,24 +27,22 @@ PR.createNS('PR.Controllers');
         }
     }
 
-    $();
-
     _.extend(EncounterController.prototype, {
 
-        newEncounter: function (patientId, previousEncounterId, empiModel, repository, msc) {
+        newEncounter: function (patientId, previousEncounterId, repository, msc) {
             var newEncounterView = new PR.Views.NewEncounterView({
                     patientId: patientId,
                     previousEncounterId: previousEncounterId,
-                    empiData: empiModel,
                     repository: repository,
                     msc: msc,
-                    appointmentModel: preBookedAppt,
-                    filterMedicalServices: filterCallback
                 });
-//            this.loadEncounterDetailedTemplates(true, function () {
-//                newEncounterView.render();
-//            });
             return newEncounterView;
+        },
+
+        loadEncounterDetailedTemplates: function(callback) {
+            var templates = PR.require.moduleTemplates.newEncounter;
+
+            PR.registerJSRenderTemplates(templates, callback);
         }
 
     });

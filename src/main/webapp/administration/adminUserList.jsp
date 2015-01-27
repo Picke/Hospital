@@ -13,7 +13,7 @@
     <div class="row">
         <div class="span14">
             <div id="adminTile" class="tileLarge" style="padding-bottom: 10px">
-                <div id="main">
+                <div id="main" style="margin-left: 0px">
                     <table id="users-table" class="pad-left-10">
                         <tr>
                             <th style   ="width : 120px">Username</th>

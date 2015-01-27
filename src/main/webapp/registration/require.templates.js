@@ -2,8 +2,12 @@ PR.require = {};
 
 PR.require.moduleTemplates = {
 
+    global: {
+        "GlobalNav" : 'templates/HeaderBar/GlobalNav.tmpl'
+    },
+
     homePage: {
-        "HomePage":'templates/HomePage.tmpl'
+        "HomePage":'templates/HomePage.tmpl',
 //        "HomePagePatientList":'/pam/templates/HomePagePatientList.tmpl',
 //        "HomePageRegistration":'/pam/templates/HomePageRegistration.tmpl',
 //        "SideBar":'/pam/templates/SideBar.tmpl',
@@ -13,7 +17,6 @@ PR.require.moduleTemplates = {
     },
 
     newEncounter: {
-        "newEncounterFlow": "/pam/templates/NewEncounterFlow.tmpl",
-        "encounterDetailed": "/pam/templates/EncounterDetailed.tmpl"
+        "newEncounterFlow": "templates/NewEncounter.tmpl"
     }
 }

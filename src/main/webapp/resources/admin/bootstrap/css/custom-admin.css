@@ -115,6 +115,92 @@ hr {
      -moz-box-sizing: content-box;
           box-sizing: content-box;
 }
+.global-menu h3 {
+    margin-left: 15px;
+}
+.global-menu a {
+    color: #333333;
+}
+.global-menu #display-username.btn {
+    cursor: default;
+}
+.global-menu .dropdown-menu table {
+    background-color: transparent;
+    margin: 15px 0 10px 0;
+}
+.global-menu .dropdown-menu table a {
+    padding: 0;
+}
+.global-menu .dropdown-menu table a:hover {
+    text-decoration: underline;
+}
+.global-menu .dropdown-menu table td {
+    padding-left: 15px;
+    border: 0;
+    background: transparent;
+}
+.global-menu button,
+.global-menu .btn {
+    background: none;
+    border: 0;
+    -webkit-box-shadow: none !important;
+    -moz-box-shadow: none !important;
+    box-shadow: none !important;
+    -o-box-shadow: none !important;
+    -ms-box-shadow: none !important;
+    padding: 5px 3px;
+    color: #333333;
+}
+.global-menu button:before,
+.global-menu .btn:before,
+.global-menu button:after,
+.global-menu .btn:after {
+    content: none !important;
+}
+.global-menu .btn,
+.global-menu .btn-group {
+    background: none !important;
+    -webkit-box-shadow: none !important;
+    -moz-box-shadow: none !important;
+    box-shadow: none !important;
+    -o-box-shadow: none !important;
+    -ms-box-shadow: none !important;
+}
+.global-menu .btn-group .dropdown-toggle {
+    padding: 5px 8px;
+    border: 0 !important;
+}
+.global-menu .global-menu-nav {
+    float: left;
+    margin-left: 15px;
+    padding-top: 5px;
+}
+.global-menu .btn-group.open .dropdown-toggle {
+    background: none !important;
+}
+.global-menu .btn-group.open .dropdown-menu {
+    margin-top: 0px;
+}
+.global-menu .btn-group.open .dropdown-menu.pull-right:before {
+    content: '';
+    display: inline-block;
+    border-left: 7px solid transparent;
+    border-right: 7px solid transparent;
+    border-bottom: 7px solid #b7b7b7;
+    position: absolute;
+    top: -7px;
+    right: 4px;
+}
+.global-menu .btn-group.open .dropdown-menu.pull-right:after {
+    content: '';
+    display: inline-block;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-bottom: 6px solid #ffffff;
+    position: absolute;
+    top: -6px;
+    right: 5px;
+}
 pre {
   overflow: auto;
 }
@@ -210,6 +296,12 @@ textarea {
 }
 optgroup {
   font-weight: bold;
+}
+.icon-home {
+    background-position: 0 -24px;
+}
+.icon-home:before {
+    content: "@home";
 }
 table {
     font-family: "Segoe UI Light";
@@ -2825,6 +2917,8 @@ select[multiple].form-group-lg .form-control {
   background-image: none;
   border: 1px solid transparent;
   border-radius: 4px;
+  box-shadow: 0 2px 0 0 #b4b4b4;
+  height: 28px;
 }
 .btn:focus,
 .btn:active:focus,
@@ -2840,7 +2934,7 @@ select[multiple].form-group-lg .form-control {
 .btn:focus,
 .btn.focus {
   color: #333;
-  text-decoration: none;
+  background-color: #E9E8E8;
 }
 .btn:active,
 .btn.active {
@@ -6078,6 +6172,9 @@ button.close {
 .span13 {
     width: 1004px;
 }
+.span8 {
+    width: 614px;
+}
 .span5 {
     width: 370px;
 }
@@ -6101,6 +6198,52 @@ button.close {
     box-shadow: 0px 2px 0px #b7b7b7;
     -o-box-shadow: 0px 2px 0px #b7b7b7;
     -ms-box-shadow: 0px 2px 0px #b7b7b7;
+}
+#headercontainer,
+#patient-banner,
+#patientbanner {
+    width: 1238px;
+    padding-left: 9px;
+    margin-right: -9px;
+    padding-right: 9px;
+    background: #fff;
+}
+#main {
+    width: 1238px;
+    margin-left: -9px;
+    padding-left: 9px;
+    margin-right: -9px;
+    padding-right: 9px;
+    background: #fff;
+    border-radius: 4px;
+}
+body:not(.bare) #headercontainer {
+    padding-bottom: 4px;
+    margin-bottom: -4px;
+    -webkit-border-radius: 0 0 4px 4px;
+    -moz-border-radius: 0 0 4px 4px;
+    border-radius: 0 0 4px 4px;
+    -webkit-box-shadow: 0 2px 0 #b7b7b7;
+    -moz-box-shadow: 0 2px 0 #b7b7b7;
+    box-shadow: 0 2px 0 #b7b7b7;
+    -o-box-shadow: 0 2px 0 #b7b7b7;
+    -ms-box-shadow: 0 2px 0 #b7b7b7;
+}
+#global-nav-container {
+    margin-left: 0px;
+}
+#headercontainer {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+#headercontainer > .row {
+    padding-left: 10px;
+}
+.container,
+.navbar-static-top .container,
+.navbar-fixed-top .container,
+.navbar-fixed-bottom .container {
+    width: 1238px;
 }
 .control-group.error > label,
 .error > label,
@@ -6132,6 +6275,12 @@ button.close {
 .pad-btm-10 {
     margin-bottom: 10px;
 }
+.pad-top-15 {
+    margin-top: 15px;
+}
+.pad-top-20 {
+    margin-top: 20px;
+}
 .pad-btm-30 {
     margin-bottom: 30px;
 }
@@ -6140,6 +6289,12 @@ button.close {
 }
 .pad-left-5 {
     margin-left: 5px;
+}
+.pad-right-20 {
+    margin-right: 20px;
+}
+.pad-right-50 {
+    margin-right: 50px;
 }
 @media screen and (min-width: 768px) {
   .carousel-control .glyphicon-chevron-left,
