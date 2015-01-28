@@ -3,9 +3,6 @@
 
         _getTemplate = function (name, url, callback) {
             console.log("getting template " + name);
-            self.get(url, function (data) {
-                if(callback) { callback(data, name); }
-            });
             return $.get(url, function (data) {
                 if(callback) { callback(data, name); }
             });

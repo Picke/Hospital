@@ -1,6 +1,6 @@
-package com.bodeychuk.users.dao;
+package com.bodeychuk.login.dao;
 
-import com.bodeychuk.users.model.User;
+import com.bodeychuk.login.model.User;
 
 import java.util.List;
 import java.util.Set;

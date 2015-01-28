@@ -2917,6 +2917,7 @@ select[multiple].form-group-lg .form-control {
   background-image: none;
   border: 1px solid transparent;
   border-radius: 4px;
+  box-shadow: 0 2px 0 0 #b4b4b4;
   height: 26px;
 }
 .btn:focus,

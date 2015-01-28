@@ -1,4 +1,4 @@
-package com.bodeychuk.users.security;
+package com.bodeychuk.login.security;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;

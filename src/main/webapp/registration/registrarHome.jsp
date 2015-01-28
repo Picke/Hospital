@@ -2,10 +2,7 @@
 <html>
 <head>
     <title>Hospital</title>
-    <link href="/resources/admin/bootstrap/css/custom-admin.css" rel="stylesheet" type="text/css">
-
-    <link rel="stylesheet/less" type="text/css" href="/resources/admin/font-awesome-4.3.0/less/icons.less" />
-    <link rel="stylesheet/less" type="text/css" href="/resources/admin/font-awesome-4.3.0/less/variables.less" />
+    <link href="/resources/registration/bootstrap/css/custom-registration.css" rel="stylesheet" type="text/css">
 
     <script src="/dependencies/jquery/jquery-latest.js" type="text/javascript"></script>
     <script src="/dependencies/underscore/underscore.js" type="text/javascript"></script>
@@ -23,8 +20,11 @@
     <script src="/registration/js/views/GlobalNavView.js" type="text/javascript"></script>
     <script src="/registration/js/views/NewEncounterView.js" type="text/javascript"></script>
 
+    <script src="/registration/js/widgets/SDSCommon.js" type="text/javascript"></script>
+
     <script src="/registration/require.templates.js" type="text/javascript"></script>
 
+    <script src="/registration/js/repositories/HomePageRepository.js" type="text/javascript"></script>
     <script src="/registration/js/repositories/NewEncounterRepository.js" type="text/javascript"></script>
     <script src="/registration/js/controllers/HomePageController.js" type="text/javascript"></script>
     <script src="/registration/js/controllers/EncounterController.js" type="text/javascript"></script>

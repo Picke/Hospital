@@ -42,7 +42,7 @@
             userHTML += "</td>";
             userHTML +=
                     "<td>" +
-                            "<button class='btn btn-danger pad-left-10' style='padding: 0px 4px; font-size: 10px' " +
+                            "<button class='btn btn-danger pad-left-10' style='padding: 0px 4px; font-size: 10px; height: 20px' " +
                             "data-toggle='confirmation'  data-placement='right'>Delete</button>" +
                             "</td></tr>";
             $('#users-table > tbody:last').append(userHTML);

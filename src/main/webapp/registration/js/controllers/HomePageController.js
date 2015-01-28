@@ -14,9 +14,9 @@ PR.createNS('PR.Controllers');
     }
 
     _.extend(HomePageController.prototype, {
-        homePageView: function() {
+        homePageView: function(repo) {
             if (!homePageView) {
-                homePageView = new PR.Views.HomePageView();
+                homePageView = new PR.Views.HomePageView(repo);
             }
             return homePageView;
         },

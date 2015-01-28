@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.bodeychuk.registration.model.Patient" table="patients">
+        <id name="patientId" type="int">
+            <column name="patientId" length="11" />
+            <generator class="increment" />
+        </id>
+        <set name="encounters" table="encounters" lazy="false"
+             cascade="persist" fetch="select">
+            <key>
+                <column name="patientId" not-null="true" />
+            </key>
+            <one-to-many class="com.bodeychuk.registration.model.Encounter"  />
+        </set>
+    </class>
+</hibernate-mapping>

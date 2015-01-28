@@ -1,5 +1,3 @@
-/** @namespace PR.Views */
-
 PR.Views.BaseView = Backbone.View.extend(_.extend(
     {
         _selector: '#main',
@@ -42,6 +40,10 @@ PR.Views.BaseView = Backbone.View.extend(_.extend(
             for (var selector in this._selectors) {
                 this.addElement(this._selectors[selector]);
             }
+        },
+
+        addElement: function(selector){
+            this._elements[selector] = $(selector);
         }
 
 

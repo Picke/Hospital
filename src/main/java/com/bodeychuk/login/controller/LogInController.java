@@ -1,6 +1,6 @@
-package com.bodeychuk.users.controller;
+package com.bodeychuk.login.controller;
 
-import com.bodeychuk.users.service.UserService;
+import com.bodeychuk.login.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.LockedException;

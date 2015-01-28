@@ -1,11 +1,10 @@
-package com.bodeychuk.users.dao;
+package com.bodeychuk.login.dao;
 
-import com.bodeychuk.users.model.User;
+import com.bodeychuk.login.model.User;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 

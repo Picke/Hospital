@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.bodeychuk.registration.model.Encounter" table="encounters">
+        <id name="encounterId" type="int">
+            <column name="encounterId" length="11" />
+            <generator class="increment" />
+        </id>
+        <property name="patientName" type="string">
+            <column name="patientName" length="45" />
+        </property>
+        <property name="patientPhone" type="string">
+            <column name="patientPhone" length="45" />
+        </property>
+        <property name="patientAddress" type="string">
+            <column name="patientAddress" length="200" />
+        </property>
+        <property name="patientDob" type="date">
+            <column name="patientDob" />
+        </property>
+        <property name="registrationDate" type="date">
+            <column name="registrationDate" />
+        </property>
+    </class>
+</hibernate-mapping>

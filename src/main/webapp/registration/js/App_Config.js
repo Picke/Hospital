@@ -64,7 +64,8 @@ PR.App = function () {
 
             home: function (tab) {
                 homePageCtrl.loadHomePageTemplates($.proxy(function () {
-                    var homePageView = homePageCtrl.homePageView();
+                    var repo = PR.Repositories.HomePageRepository();
+                    var homePageView = homePageCtrl.homePageView(repo);
                     this._preDestroyCurrentView();
                     homePageView.render();
                     this._routeChanged({view: homePageView, routeHandler: "patientList"});

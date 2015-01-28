@@ -1,4 +1,4 @@
-package com.bodeychuk.users.model;
+package com.bodeychuk.login.model;
 
 import java.util.HashSet;
 import java.util.Set;
