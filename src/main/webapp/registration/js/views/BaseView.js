@@ -47,4 +47,4 @@ PR.Views.BaseView = Backbone.View.extend(_.extend(
         }
 
 
-    }, new PR.Views.BaseView()))
+    }, new PR.BaseView()))

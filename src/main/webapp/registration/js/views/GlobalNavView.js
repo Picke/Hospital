@@ -1,6 +1,6 @@
 PR.Views.GlobalNavView = function () {
 
-    var self = new PR.Views.BaseView();
+    var self = new PR.BaseView();
 
     self.render = function () {
         var $container = $('#headercontainer');

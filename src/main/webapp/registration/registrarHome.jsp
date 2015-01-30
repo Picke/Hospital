@@ -8,6 +8,7 @@
     <script src="/dependencies/underscore/underscore.js" type="text/javascript"></script>
     <script src="/dependencies/backbone/backbone.js" type="text/javascript"></script>
     <script src="/dependencies/jsRender/jsrender.js" type="text/javascript"></script>
+    <script src="/dependencies/eventEmitter/EventEmitter.js" type="text/javascript"></script>
 
     <script src="/common/js/lib/Namespaces.js" type="text/javascript"></script>
     <script src="/common/js/lib/PRCore.js" type="text/javascript"></script>

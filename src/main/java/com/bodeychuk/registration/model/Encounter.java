@@ -9,6 +9,7 @@ public class Encounter {
     private String patientAddress;
     private Date patientDob;
     private Date registrationDate;
+    private int patientId;
 
     public Encounter() {
     }
@@ -68,5 +69,13 @@ public class Encounter {
 
     public void setRegistrationDate(Date registrationDate) {
         this.registrationDate = registrationDate;
+    }
+
+    public int getPatientId() {
+        return patientId;
+    }
+
+    public void setPatientId(int patientId) {
+        this.patientId = patientId;
     }
 }

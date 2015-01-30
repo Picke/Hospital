@@ -1,23 +1,28 @@
 PR.createNS('PR.Repositories');
 
 PR.Repositories.HomePageRepository = function () {
-    var self = new PR.Views.BaseView();
+    var self = new PR.BaseView();
+    var eventsPublisher = PR.BaseView.prototype;
 
-    self.encounterData = null;
+
+
+    self.patientsData = null;
 
 
     self._loadAllData = function () {
-        self._loadPatientsData();
+        self._loadPatientsData().done(function () {
+            eventsPublisher.publish('dataReady');
+        });
     };
 
     self._loadPatientsData = function () {
-        PR.SDS.Common._loadPatientsData(function (data) {
-            self.encounterData = data;
+        return PR.SDS.Common._loadPatientsData(function (data) {
+            self.patientsData = data;
         })
     };
 
-    self._getEncounterData = function () {
-        return self.encounterData;
+    self._getPatientsData = function () {
+        return self.patientsData;
     }
 
     self._loadAllData();

@@ -29,6 +29,17 @@ PR.createNS('PR.Controllers');
 
     _.extend(EncounterController.prototype, {
 
+        medicalServiceCodeView: function(patientId, previousEncounterId, onNextBtnClick, parentView) {
+            var medicalServiceCodeView = new PR.Views.MedicalServiceCodeView({
+                patientId: patientId,
+                previousEncounterId: previousEncounterId,
+                filterMedicalServices: filterCallback,
+                onNextBtnClick: onNextBtnClick,
+                parentView: parentView
+            });
+            return medicalServiceCodeView;
+        },
+
         newEncounter: function (patientId, previousEncounterId, repository, msc) {
             var newEncounterView = new PR.Views.NewEncounterView({
                     patientId: patientId,

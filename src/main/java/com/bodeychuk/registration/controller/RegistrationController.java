@@ -1,6 +1,6 @@
 package com.bodeychuk.registration.controller;
 
-import com.bodeychuk.registration.model.Patient;
+import com.bodeychuk.registration.model.Encounter;
 import com.bodeychuk.registration.service.PatientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,14 +16,12 @@ public class RegistrationController {
     @Autowired
     PatientService patientService;
 
-    @RequestMapping(value =  "/getAllPatients", method = RequestMethod.GET)
+    @RequestMapping(value =  "/getAllEncounters", method = RequestMethod.GET)
     public
     @ResponseBody
-    List<Patient> getAllPatients () {
-        List<Patient> patients =  patientService.getAllPatients();
-        return patients;
-
-
+    List<Encounter> getAllPatients () {
+        List<Encounter> encounters =  patientService.getAllEncounters();
+        return encounters;
     }
 
 

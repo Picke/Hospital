@@ -18,6 +18,6 @@ public class PatientDaoImpl implements PatientDao {
 
     @Override
     public List<Patient> getAllPatients() {
-        return sessionFactory.getCurrentSession().createQuery("from Patient").list();
+        return sessionFactory.getCurrentSession().createQuery("from Patient group by patientId").list();
     }
 }

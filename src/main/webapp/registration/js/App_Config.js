@@ -93,10 +93,9 @@ PR.App = function () {
                         this._preDestroyCurrentView();
                         this._routeChanged({view: newEncounterView, routeHandler: 'newEncounter'});
                     }, this);
-//                homePageView.closeSubViewsPopups();
-//                var medicalServiceView = encounterCtrl.medicalServiceCodeView(patientId, previousEncounterId, onNextBtnClick, this._currentView);
-//                this._routeChanged({view: medicalServiceView, routeHandler: 'newEncounter'}); // we need the view (to remove it), for case when used browser back from MedicalServiceCodeView
-//                medicalServiceView.render();
+                var medicalServiceView = encounterCtrl.medicalServiceCodeView(patientId, previousEncounterId, onNextBtnClick, this._currentView);
+                this._routeChanged({view: medicalServiceView, routeHandler: 'newEncounter'}); // we need the view (to remove it), for case when used browser back from MedicalServiceCodeView
+                medicalServiceView.render();
                 }, this));
 
             },
