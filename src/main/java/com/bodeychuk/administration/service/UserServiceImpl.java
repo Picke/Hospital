@@ -1,9 +1,9 @@
-package com.bodeychuk.login.service;
+package com.bodeychuk.administration.service;
 
-import com.bodeychuk.login.dao.UserDao;
-import com.bodeychuk.login.dao.UserDto;
-import com.bodeychuk.login.model.User;
-import com.bodeychuk.login.model.UserRole;
+import com.bodeychuk.administration.dao.UserDao;
+import com.bodeychuk.administration.dao.UserDto;
+import com.bodeychuk.administration.model.User;
+import com.bodeychuk.administration.model.UserRole;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
@@ -11,7 +11,10 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
-import java.util.*;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -38,7 +41,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void saveUser(UserDto userDto) {
-        com.bodeychuk.login.model.User user = new com.bodeychuk.login.model.User(userDto.getUsername(), userDto.getPassword(), true, new HashSet<UserRole>());
+        User user = new User(userDto.getUsername(), userDto.getPassword(), true, new HashSet<UserRole>());
         userDao.saveUser(user);
         userDao.saveUserRoles(user, userDto.getRoles());
     }

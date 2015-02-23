@@ -2,7 +2,7 @@
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
         "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-    <class name="com.bodeychuk.login.model.UserRole" table="roles">
+    <class name="com.bodeychuk.administration.model.UserRole" table="roles">
         <id name="id" type="int">
             <column name="Id" length="11" />
             <generator class="increment" />

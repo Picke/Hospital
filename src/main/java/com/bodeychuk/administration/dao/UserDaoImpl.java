@@ -1,6 +1,6 @@
-package com.bodeychuk.login.dao;
+package com.bodeychuk.administration.dao;
 
-import com.bodeychuk.login.model.User;
+import com.bodeychuk.administration.model.User;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Set;
 
 @Transactional
-public class UserDaoImpl implements UserDao{
+public class UserDaoImpl implements UserDao {
 
     private final String SAVE_USER_ROLES = "INSERT INTO user_roles (UserId, RoleId) VALUES (" +
             "(SELECT Id FROM users WHERE Username = ?), " +

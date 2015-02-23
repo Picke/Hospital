@@ -27,8 +27,8 @@
         <property name="dataSource" ref="dataSource" />
         <property name="mappingResources">
             <list>
-                <value>com/bodeychuk/login/Users.hbm.xml</value>
-                <value>com/bodeychuk/login/UserRoles.hbm.xml</value>
+                <value>com/bodeychuk/administration/Users.hbm.xml</value>
+                <value>com/bodeychuk/administration/UserRoles.hbm.xml</value>
                 <value>com/bodeychuk/registration/Encounter.hbm.xml</value>
                 <value>com/bodeychuk/registration/Patient.hbm.xml</value>
             </list>
@@ -44,7 +44,7 @@
         </property>
     </bean>
 
-    <bean id="userDao" class="com.bodeychuk.login.dao.UserDaoImpl">
+    <bean id="userDao" class="com.bodeychuk.administration.dao.UserDaoImpl">
         <property name="sessionFactory" ref="sessionFactory" />
     </bean>
 

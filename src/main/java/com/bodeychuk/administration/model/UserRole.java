@@ -1,4 +1,4 @@
-package com.bodeychuk.login.model;
+package com.bodeychuk.administration.model;
 
 public class UserRole {
     private int id;

@@ -1,6 +1,6 @@
 package com.bodeychuk.login.controller;
 
-import com.bodeychuk.login.service.UserService;
+import com.bodeychuk.administration.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.LockedException;
@@ -60,12 +60,4 @@ public class LogInController {
 
     }
 
-
-
-    @RequestMapping(value =  "/registration", method = RequestMethod.GET)
-    public ModelAndView registration() {
-        ModelAndView model = new ModelAndView();
-        model.setViewName("registrarHome");
-        return model;
-    }
 }

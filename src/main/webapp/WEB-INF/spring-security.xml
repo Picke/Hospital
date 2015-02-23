@@ -24,9 +24,6 @@
 
     </http>
 
-    <beans:bean id="hospitalAuthenticationSuccessHandler"
-                class="com.bodeychuk.login.security.HospitalAuthenticationSuccessHandler" />
-
     <authentication-manager>
         <authentication-provider user-service-ref="hospitalUserDetailsService" >
         </authentication-provider>

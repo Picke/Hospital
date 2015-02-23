@@ -1,4 +1,4 @@
-package com.bodeychuk.login.dao;
+package com.bodeychuk.administration.dao;
 
 import java.util.HashSet;
 import java.util.Set;

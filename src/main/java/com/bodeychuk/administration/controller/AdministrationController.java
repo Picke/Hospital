@@ -1,7 +1,7 @@
 package com.bodeychuk.administration.controller;
 
-import com.bodeychuk.login.dao.UserDto;
-import com.bodeychuk.login.service.UserService;
+import com.bodeychuk.administration.dao.UserDto;
+import com.bodeychuk.administration.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;

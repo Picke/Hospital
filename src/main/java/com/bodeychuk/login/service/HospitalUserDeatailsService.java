@@ -1,7 +1,7 @@
 package com.bodeychuk.login.service;
 
-import com.bodeychuk.login.dao.UserDao;
-import com.bodeychuk.login.model.UserRole;
+import com.bodeychuk.administration.dao.UserDao;
+import com.bodeychuk.administration.model.UserRole;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
@@ -21,7 +21,7 @@ public class HospitalUserDeatailsService implements UserDetailsService {
     public UserDetails loadUserByUsername(final String username)
             throws UsernameNotFoundException {
 
-        com.bodeychuk.login.model.User user = userDao.findByUserName(username);
+        com.bodeychuk.administration.model.User user = userDao.findByUserName(username);
         List<GrantedAuthority> authorities = buildUserAuthority(user.getUserRole());
 
         return buildUserForAuthentication(user, authorities);
@@ -29,7 +29,7 @@ public class HospitalUserDeatailsService implements UserDetailsService {
 
     }
 
-    private org.springframework.security.core.userdetails.User buildUserForAuthentication(com.bodeychuk.login.model.User user,
+    private org.springframework.security.core.userdetails.User buildUserForAuthentication(com.bodeychuk.administration.model.User user,
                                             List<GrantedAuthority> authorities) {
         return new User(user.getUsername(),
                 user.getPassword(), true,

@@ -1,6 +1,6 @@
-package com.bodeychuk.login.service;
+package com.bodeychuk.administration.service;
 
-import com.bodeychuk.login.dao.UserDto;
+import com.bodeychuk.administration.dao.UserDto;
 
 public interface UserService {
     public String getCurrentUserRoles() throws Exception;
