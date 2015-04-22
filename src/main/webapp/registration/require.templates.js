@@ -17,6 +17,7 @@ PR.require.moduleTemplates = {
     },
 
     newEncounter: {
-        "newEncounterFlow": "templates/NewEncounter.tmpl"
+        "MedicalServicePopup": "templates/MedicalServiceCode.tmpl",
+        "NewEncounterView": "templates/NewEncounter.tmpl"
     }
 }

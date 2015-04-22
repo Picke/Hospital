@@ -2878,7 +2878,6 @@ select[multiple].form-group-lg .form-control {
 }
 @media (min-width: 768px) {
   .form-horizontal .control-label {
-    padding-top: 7px;
     margin-bottom: 0;
     text-align: right;
   }
@@ -3001,6 +3000,7 @@ fieldset[disabled] .btn-default.active {
   color: #fff;
   background-color: #337ab7;
   border-color: #2e6da4;
+  box-shadow: 0 2px 0 0 #1d6ca1;
 }
 .btn-primary:hover,
 .btn-primary:focus,
@@ -5622,110 +5622,165 @@ button.close {
   background: transparent;
   border: 0;
 }
-.modal-open {
-  overflow: hidden;
+
+#medical-service-code-container .medical-service-code-body {
+    width: 575px;
+    margin: 20px auto;
+    position: relative;
 }
-.modal {
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  z-index: 1040;
-  display: none;
-  overflow: hidden;
-  -webkit-overflow-scrolling: touch;
-  outline: 0;
+.medical-service-code-body {
+    width: 575px;
+    margin: 20px auto;
+    position: relative;
 }
-.modal.fade .modal-dialog {
-  -webkit-transition: -webkit-transform .3s ease-out;
-       -o-transition:      -o-transform .3s ease-out;
-          transition:         transform .3s ease-out;
-  -webkit-transform: translate(0, -25%);
-      -ms-transform: translate(0, -25%);
-       -o-transform: translate(0, -25%);
-          transform: translate(0, -25%);
+.medical-service-menu-label {
+    width: 200px !important;
+    margin-right: 20px;
 }
-.modal.in .modal-dialog {
-  -webkit-transform: translate(0, 0);
-      -ms-transform: translate(0, 0);
-       -o-transform: translate(0, 0);
-          transform: translate(0, 0);
-}
-.modal-open .modal {
-  overflow-x: hidden;
-  overflow-y: auto;
-}
-.modal-dialog {
-  position: relative;
-  width: auto;
-  margin: 10px;
-}
-.modal-content {
-  position: relative;
-  background-color: #fff;
-  -webkit-background-clip: padding-box;
-          background-clip: padding-box;
-  border: 1px solid #999;
-  border: 1px solid rgba(0, 0, 0, .2);
-  border-radius: 6px;
-  outline: 0;
-  -webkit-box-shadow: 0 3px 9px rgba(0, 0, 0, .5);
-          box-shadow: 0 3px 9px rgba(0, 0, 0, .5);
+#medical-service-modal-menu {
+    width: 300px;
 }
 .modal-backdrop {
-  position: absolute;
-  top: 0;
-  right: 0;
-  left: 0;
-  background-color: #000;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1040;
+    background-color: #000000;
 }
 .modal-backdrop.fade {
-  filter: alpha(opacity=0);
-  opacity: 0;
+    opacity: 0;
 }
-.modal-backdrop.in {
-  filter: alpha(opacity=50);
-  opacity: .5;
+.modal-backdrop,
+.modal-backdrop.fade.in {
+    opacity: 0.4;
+    filter: alpha(opacity=80);
+}
+.modal {
+    position: fixed;
+    top: 30%;
+    left: 50%;
+    z-index: 1050;
+    width: 560px;
+    margin-left: -280px;
+    background-color: #ffffff;
+    border: 1px solid #999;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    *border: 1px solid #999;
+    /* IE6-7 */
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+    -webkit-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+    -moz-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+    -o-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+    -ms-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+    -webkit-background-clip: padding-box;
+    -moz-background-clip: padding-box;
+    background-clip: padding-box;
+    outline: none;
+}
+.modal .modal-footer .button-bar {
+    margin: 10px;
+}
+.modal.fade {
+    -webkit-transition: opacity .3s linear, top .3s ease-out;
+    -moz-transition: opacity .3s linear, top .3s ease-out;
+    -o-transition: opacity .3s linear, top .3s ease-out;
+    transition: opacity .3s linear, top .3s ease-out;
+    top: -25%;
+}
+.modal.fade.in {
+    top: 10%;
 }
 .modal-header {
-  min-height: 16.42857143px;
-  padding: 15px;
-  border-bottom: 1px solid #e5e5e5;
+    padding: 9px 15px;
+    border-bottom: 1px solid #eee;
 }
 .modal-header .close {
-  margin-top: -2px;
+    margin-top: 2px;
 }
-.modal-title {
-  margin: 0;
-  line-height: 1.42857143;
+.modal-header h3 {
+    margin: 0;
+    line-height: 30px;
 }
 .modal-body {
-  position: relative;
-  padding: 15px;
+    position: relative;
+    max-height: 400px;
+    margin: 0;
+    padding: 0;
+}
+.modal-form {
+    margin-bottom: 0;
 }
 .modal-footer {
-  padding: 15px;
-  text-align: right;
-  border-top: 1px solid #e5e5e5;
+    padding: 14px 15px 15px;
+    margin-bottom: 0;
+    text-align: right;
+    background-color: #f5f5f5;
+    border-top: 1px solid #ddd;
+    -webkit-border-radius: 0 0 6px 6px;
+    -moz-border-radius: 0 0 6px 6px;
+    border-radius: 0 0 6px 6px;
+    -webkit-box-shadow: inset 0 1px 0 #ffffff;
+    -moz-box-shadow: inset 0 1px 0 #ffffff;
+    box-shadow: inset 0 1px 0 #ffffff;
+    -o-box-shadow: inset 0 1px 0 #ffffff;
+    -ms-box-shadow: inset 0 1px 0 #ffffff;
+    *zoom: 1;
+}
+.modal-footer:before,
+.modal-footer:after {
+    display: table;
+    content: "";
+    line-height: 0;
+}
+.modal-footer:after {
+    clear: both;
 }
 .modal-footer .btn + .btn {
-  margin-bottom: 0;
-  margin-left: 5px;
+    margin-left: 5px;
+    margin-bottom: 0;
 }
 .modal-footer .btn-group .btn + .btn {
-  margin-left: -1px;
+    margin-left: -1px;
 }
 .modal-footer .btn-block + .btn-block {
-  margin-left: 0;
+    margin-left: 0;
 }
-.modal-scrollbar-measure {
-  position: absolute;
-  top: -9999px;
-  width: 50px;
-  height: 50px;
-  overflow: scroll;
+.modal-footer {
+    display: inline-flex;
+    text-align: left;
+    padding: 0;
+    background-color: #fff;
+    border-top: 1px solid #cccccc;
+    bottom: 0;
+    margin-left: 0px;
+    width: 100%;
+    -webkit-border-radius: 0 0 3px 3px;
+    -moz-border-radius: 0 0 3px 3px;
+    border-radius: 0 0 3px 3px;
+    -webkit-box-shadow: inset 0 1px 0 #ffffff;
+    -moz-box-shadow: inset 0 1px 0 #ffffff;
+    box-shadow: inset 0 1px 0 #ffffff;
+    -o-box-shadow: inset 0 1px 0 #ffffff;
+    -ms-box-shadow: inset 0 1px 0 #ffffff;
 }
+.button-bar > div {
+    float: left;
+    margin-right: 9px;
+}
+
+#new-encounter-screen  .medical-service-code-section {
+    margin-top: 10px;
+}
+
+#new-encounter-screen  #medical-service-menu {
+    min-width: 200px;
+}
+
 @media (min-width: 768px) {
   .modal-dialog {
     width: 600px;
@@ -5743,6 +5798,12 @@ button.close {
   .modal-lg {
     width: 900px;
   }
+}
+.button-bar {
+    margin: 20px 0 0 20px;
+    position: relative;
+    z-index: 1;
+    *zoom: 1;
 }
 .tooltip {
   position: absolute;
@@ -6180,6 +6241,9 @@ button.close {
 .span5 {
     width: 370px;
 }
+.span4 {
+    width: 302px;
+}
 .span2 {
     width: 146px;
 }
@@ -6268,6 +6332,15 @@ body:not(.bare) #headercontainer {
 .error textarea {
     color: #b94a48;
     border-color: #b94a48;
+}
+select,
+button,
+input[type="button"],
+input[type="reset"],
+input[type="submit"],
+input[type="radio"],
+input[type="checkbox"] {
+    cursor: pointer;
 }
 .componentLinks {
     text-decoration: none;

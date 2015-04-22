@@ -9,6 +9,7 @@
     <script src="/dependencies/backbone/backbone.js" type="text/javascript"></script>
     <script src="/dependencies/jsRender/jsrender.js" type="text/javascript"></script>
     <script src="/dependencies/eventEmitter/EventEmitter.js" type="text/javascript"></script>
+    <script src="/dependencies/bootstrap/bootstrap-modal.js" type="text/javascript"></script>
 
     <script src="/common/js/lib/Namespaces.js" type="text/javascript"></script>
     <script src="/common/js/lib/PRCore.js" type="text/javascript"></script>
@@ -19,6 +20,7 @@
     <script src="/registration/js/views/BaseView.js" type="text/javascript"></script>
     <script src="/registration/js/views/HomePageView.js" type="text/javascript"></script>
     <script src="/registration/js/views/GlobalNavView.js" type="text/javascript"></script>
+    <script src="/registration/js/views/MedicalServiceCodeView.js" type="text/javascript"></script>
     <script src="/registration/js/views/NewEncounterView.js" type="text/javascript"></script>
 
     <script src="/registration/js/widgets/SDSCommon.js" type="text/javascript"></script>

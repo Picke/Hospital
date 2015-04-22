@@ -1,7 +1,7 @@
-(function (ScreenView, exports) {
+(function (BaseView, exports) {
     var MedicalServiceCodeView;
 
-    MedicalServiceCodeView = ScreenView.extend({
+    MedicalServiceCodeView = BaseView.extend({
         _selector: "#medical-service-code-container",
         _selectors: {
             closeMedicalServiceCodeContainer: ".close-medical-service-code-modal",
@@ -16,7 +16,6 @@
             this.onNextBtnClick = _.isFunction(options.onNextBtnClick) ? options.onNextBtnClick : $.noop;
             this._patientId = $.isNumeric(patientId) ? patientId : null;
             this._medicalService = null;
-            this.filterMedicalServices = _.isFunction(options.filterMedicalServices)? options.filterMedicalServices: HMS.PAM.lib.Helpers.constant(true);
             this.parentView = options.parentView;
         },
 
@@ -25,7 +24,7 @@
         },
 
         _initModal: function () {
-            var html = $.render.medicalServiceCodeSelection();
+            var html = $.render.medicalServiceCodeTemplate();
             this.setHtml(html);
             $(this._html).modal({ backdrop: 'static', keyboard: false });
         },
@@ -79,7 +78,7 @@
         },
 
         _nextButtonHandler: function() {
-            this._medicalService = this.getElement("medicalServiceCodeMenu").val();
+            this._medicalService = $(this._selectors.medicalServiceCodeMenu).val();
             this.onNextBtnClick(this._medicalService);
         },
 
@@ -88,43 +87,7 @@
         },
 
         _addEventHandlers: function () {
-            this.getElement("medicalServiceCodeMenu").on('change', $.proxy(function(){
-                    if (this.getElement("medicalServiceCodeMenu").val()) {
-                        this.getElement("medicalServiceCodeNextButton").removeAttr('disabled');
-                    } else {
-                        this.getElement("medicalServiceCodeNextButton").attr('disabled', true);
-                    }
-                    //needs for ie
-                    _.delay($.proxy(function() {
-                        this.getElement('medicalServiceCodeMenu').focus();
-                    }, this), 100);
-                }, this)).on("keydown", $.proxy(function(e){
-                    if (e.keyCode === 13) {
-                        _.delay($.proxy(function() {
-                            this.getElement("medicalServiceCodeNextButton").focus();
-                        }, this), 0);
-                    }
-                }, this));
-            this.getElement("medicalServiceCodeNextButton").on('click', $.proxy(this._nextButtonHandler, this));
-            this.getElement("closeMedicalServiceCodeContainer").on('click', $.proxy(function() {
-                    this._destroy();
-                    HMS.PAM.controller.back(true);
-                }, this)).on('keydown', $.proxy(function(e) {
-                    if (e.keyCode === 9 && !e.shiftKey) {
-                        e.preventDefault();
-                        this.getElement("closeMedicalServiceCodeButton").focus();
-                    }
-                }, this));
-            this.getElement("closeMedicalServiceCodeButton").on('keydown', $.proxy(function(e) {
-                if (e.keyCode === 9) {
-                    e.preventDefault();
-                    if (!e.shiftKey) {
-                        this.getElement('medicalServiceCodeMenu').focus();
-                    } else {
-                        this.getElement('closeMedicalServiceCodeContainer').focus();
-                    }
-                }
-            }, this));
+            $(this._selectors.medicalServiceCodeNextButton).on('click', $.proxy(this._nextButtonHandler, this));
         },
 
         _destroy: function() {
@@ -142,38 +105,21 @@
         },
 
         render: function () {
-            commonUI.block();
             var callback = function (data) {
                 this._updateMedicalServicesMenu(data.services);
-                commonUI.unblock();
             };
-            HMS.Widget.Alert('clear');
             this._loadTemplate($.proxy(function() {
                 this._initModal();
                 this.$el = $(this._selector);
-                this._initDomElements();
                 this._postRender();
-                HMS.SDS.PAM.getMedicalServices($.proxy(callback, this));
+//                HMS.SDS.PAM.getMedicalServices($.proxy(callback, this));
             }, this));
             return this;
         }
     });
     exports.MedicalServiceCodeView = MedicalServiceCodeView;
-    MedicalServiceCodeView.filters = {
-        QUICK_SCHEDULING: function (msv) {
-            // we should show only quick scheduling MSV with inpatient/outpatient types
-            return msv.schedulingRequired &&
-                msv.medicalServiceTypeCode !== HMS.Common.Constants.MedicalService.Emergency.TypeCode;
-        },
-
-        QUICK_SCHEDULING_OUTPATIENT: function (msv) {
-            var isQuickScheduling = HMS.PAM.Views.MedicalServiceCodeView.filters.QUICK_SCHEDULING(msv);
-            // returns quick scheduling MSV with only outpatient types
-            return isQuickScheduling && !msv.inpatient;
-        }
-    };
 })(
-        HMS.PAM.Views.ScreenView,
+        PR.Views.BaseView,
         /*exports*/
-        HMS.PAM.Views
+        PR.Views
     );

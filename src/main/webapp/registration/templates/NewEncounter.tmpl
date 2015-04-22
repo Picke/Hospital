@@ -1,32 +1,20 @@
 <script type="text/html" data-type="template" data-templatename="newEncounterTemplate">
     <div id="main">
-        <div class="tileLarge row" id="home-page-content" style="width: 1238; margin-left: -9px">
-            <div class="home-page-filter-container">
-                <div data-container-key="patientFilter"></div>
-                <div data-container-key="scheduleFilter"></div>
+        <div class="tileLarge row" id="new-encounter-screen" style="width: 1238; margin-left: -9px">
+            <div class="row pad-btm-10">
+                 <div class="span5 pull-right medical-service-code-section">
+                      <form class="form-horizontal medical-service-code">
+                           <fieldset>
+                                <div class="control-group-MSR">
+                                     <label class="control-label" id="medical-service-menu-label">Medical Service</label>
+                                     <div class="controls">
+                                         <select class="span3" id="medical-service-menu"></select>
+                                     </div>
+                                </div>
+                           </fieldset>
+                      </form>
+                 </div>
             </div>
-            <div class="home-page-tabs-content">
-                <div class="home-page-content-container" data-container-key="registration"></div>
-                <div class="home-page-content-container" data-container-key="filterTabs"></div>
-                <div class="home-page-content-container" data-container-key="patientList">
-                    <input type="text" id="patient-search" style="width: 500px" class="pad-top-20 pad-right-50 pull-right"
-                        placeholder="Find by patient #/encounter #/patient name"/>
-                    <div class="span13 pull-right pad-top-20 pad-right-50" style="min-height: 500px">
-                        <hr>
-                        <input type="text" id="patient-search" placeholder="Find by patient #/encounter #/patient name"/>
-                    </div>
-
-                    <input type="text" id="patient-search" style="width: 500px" class="pad-top-20 pad-right-50 pull-right"
-                        placeholder="Find by patient #/encounter #/patient name"/>
-                    <div class="span13 pull-right pad-top-20 pad-right-50" style="min-height: 500px">
-                        <hr>
-                        <input type="text" id="patient-search" placeholder="Find by patient #/encounter #/patient name"/>
-                    </div>
-                </div>
-                <div class="home-page-content-container" data-container-key="resourceCalendar"></div>
-                <div class="home-page-content-container" data-container-key="schedule"></div>
-                <div class="home-page-content-container" data-container-key="mySchedule"></div>
-             </div>
         </div>
     </div>
 </script>

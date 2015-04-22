@@ -1,5 +1,5 @@
 PR.Views.NewEncounterView = PR.Views.BaseView.extend({
-    initialize: function (options) {
+    initialize: function () {
         this._build();
     },
 
