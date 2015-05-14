@@ -1,6 +1,6 @@
 PR.Views.HomePageView = PR.Views.BaseView.extend({
 
-    repository: null,
+    _repository: null,
     eventsPublisher: PR.BaseView.prototype,
 
     _selectors: {

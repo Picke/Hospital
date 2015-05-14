@@ -1,0 +1,33 @@
+<script data-type="template" data-templatename="medicalServiceCodeTemplate" type="text/x-jsrender">
+    <div class="modal" data-backdrop="static" id="medical-service-code-container">
+        <button class="close-medical-service-code-modal close close-medical-service-code-modal-button"><i class="icon-remove"></i></button>
+        <div class="modal-header">
+            <h2>Medical Service</h2>
+        </div>
+        <div class="modal-body">
+            <div class="row pad-btm-10">
+                <div class="span5 pull-right medical-service-code-body">
+                    <form class="form-horizontal MedicalServiceCode">
+                        <fieldset>
+                            <div class="control-group-MSR">
+                                <label class="control-label medical-service-menu-label">Select a medical service first:</label>
+                                <div class="controls">
+                                    <select class="span3" id="medical-service-modal-menu">
+                                        <option value="inpatient">Inpatient</option>
+                                        <option value="outpatient">Outpatient</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="row modal-footer">
+            <div class="span4 button-bar">
+                <div><button class="btn btn-primary medical-service-code-button-next" data-dismiss='modal'>Next</button></div>
+                <div><button class="btn close-medical-service-code-modal" data-dismiss='modal'>Cancel</button></div>
+            </div>
+        </div>
+    </div>
+</script>

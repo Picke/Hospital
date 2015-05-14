@@ -244,7 +244,6 @@ select {
     padding-bottom: 1px;
     font-family: "Segoe UI Light";
     font-size: 14px;
-    width: 160px;
     height: 28px;
     border: 1px solid #cccccc;;
 }
@@ -1184,11 +1183,11 @@ h1,
 }
 h2,
 .h2 {
-  font-size: 30px;
+  font-size: 24px;
 }
 h3,
 .h3 {
-  font-size: 24px;
+  font-size: 20px;
 }
 h4,
 .h4 {
@@ -2258,10 +2257,9 @@ table col[class*="col-"] {
 [class*="span"] {
     float: none;
     min-height: 1px;
-    margin-left: 10px;
 }
 .control-group {
-    margin-bottom: 9px;
+    margin-bottom: 18px;
 }
 .control-group:before,
 .control-group:after {
@@ -2279,6 +2277,35 @@ table col[class*="col-"] {
     *padding-left: 20px;
     margin-left: 146px;
     *margin-left: 0;
+}
+.controls .radio.inline {
+    padding-left: 17px;
+    cursor: pointer;
+}
+.radio,
+.checkbox {
+    min-height: 18px;
+    padding-left: 20px;
+}
+.radio input[type="radio"],
+.checkbox input[type="checkbox"] {
+    float: left;
+    margin-left: -20px;
+}
+.controls > .radio:first-child,
+.controls > .checkbox:first-child {
+    padding-top: 5px;
+}
+.radio.inline,
+.checkbox.inline {
+    display: inline-block;
+    padding-top: 5px;
+    margin-bottom: 0;
+    vertical-align: middle;
+}
+.radio.inline + .radio.inline,
+.checkbox.inline + .checkbox.inline {
+    margin-left: 10px;
 }
 .validation-required-prefix {
     display: inline-block;
@@ -2461,9 +2488,23 @@ legend {
   border-bottom: 1px solid #e5e5e5;
 }
 label {
-  display: inline-block;
-  max-width: 100%;
-  margin-bottom: 5px;
+    cursor: default;
+}
+label.inline {
+    display: inline-block;
+    margin-left: 3px;
+}
+label.inline.afterBlock {
+    position: relative;
+    top: 2px;
+}
+label.inline.checkbox,
+label.inline.radio {
+    padding-bottom: 5px;
+}
+label.radio.inline.withTextInput {
+    padding-top: 0;
+    margin-left: 0;
 }
 input[type="search"] {
   -webkit-box-sizing: border-box;
@@ -2568,6 +2609,7 @@ input[type="search"] {
     line-height: 46px;
   }
 }
+
 .form-group {
   margin-bottom: 15px;
 }
@@ -2864,7 +2906,7 @@ select[multiple].form-group-lg .form-control {
 .form-horizontal .checkbox,
 .form-horizontal .radio-inline,
 .form-horizontal .checkbox-inline {
-  padding-top: 7px;
+  padding-top: 3px;
   margin-top: 0;
   margin-bottom: 0;
 }
@@ -2880,6 +2922,7 @@ select[multiple].form-group-lg .form-control {
   .form-horizontal .control-label {
     margin-bottom: 0;
     text-align: right;
+    width: 136px;
   }
 }
 .form-horizontal .has-feedback .form-control-feedback {
@@ -2894,6 +2937,17 @@ select[multiple].form-group-lg .form-control {
   .form-horizontal .form-group-sm .control-label {
     padding-top: 6px;
   }
+}
+.control-label span,
+span.required {
+    font-size: 26px;
+    margin-right: 5px;
+    line-height: 0px;
+    position: relative;
+    top: 8px;
+}
+.validation-required-prefix {
+    display: inline-block;
 }
 .btn {
   display: inline-block;
@@ -5781,6 +5835,10 @@ button.close {
     min-width: 200px;
 }
 
+#quick-form .patient-section-title {
+    margin-left: 45px;
+}
+
 @media (min-width: 768px) {
   .modal-dialog {
     width: 600px;
@@ -6238,8 +6296,11 @@ button.close {
 .span8 {
     width: 614px;
 }
+.span7 {
+    width: 536px;
+}
 .span5 {
-    width: 370px;
+    width: 394px;
 }
 .span4 {
     width: 302px;
@@ -6247,8 +6308,14 @@ button.close {
 .span2 {
     width: 146px;
 }
+.offset1 {
+    margin-left: 128px;
+}
 .pull-right {
     float: right;
+}
+.flexible {
+    display: flex;
 }
 .tileLarge {
     background-color: #ffffff;
@@ -6442,6 +6509,7 @@ input[type="checkbox"] {
 .container-fluid:after,
 .row:after,
 .form-horizontal .form-group:after,
+.form-horizontal .control-group:after,
 .btn-toolbar:after,
 .btn-group-vertical > .btn-group:after,
 .nav:after,
