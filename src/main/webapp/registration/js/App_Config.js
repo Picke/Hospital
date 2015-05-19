@@ -16,7 +16,6 @@ PR.App = function () {
 
             routes: {
                 "new-encounter": "newEncounter",
-                "patients": "patientList",
                 "patient-chart/:patientId/:encounterId/:tileCode": "enconterDeatailed",
                 "patient-chart/:patientId/:encounterId/:tileCode/": "enconterDeatailed",
                 "*path": "home",
@@ -64,26 +63,22 @@ PR.App = function () {
                 }
             },
 
-            home: function (tab) {
+            home: function () {
                 homePageCtrl.loadHomePageTemplates($.proxy(function () {
                     var repo = PR.Repositories.HomePageRepository();
                     var homePageView = homePageCtrl.homePageView(repo);
                     this._preDestroyCurrentView();
                     homePageView.render();
                     this._routeChanged({view: homePageView, routeHandler: "patientList"});
+                    this.navigate('#patientList');
 
                 }, this));
 
             },
 
-            newEncounter: function (patientId, previousEncounterId) {
+            newEncounter: function (patientId) {
                 encounterCtrl.loadEncounterDetailedTemplates($.proxy(function () {
                     var repo = PR.Repositories.NewEncounterRepository();
-
-//                    var newEncounterView = encounterCtrl.newEncounter();
-//                    this._preDestroyCurrentView();
-//                    newEncounterView.render();
-//                    this._routeChanged({view: newEncounterView, routeHandler: "newEncounter"});
 
                     var onNextBtnClick = $.proxy(function (msc) {
                         var newEncounterView = encounterCtrl.newEncounter(
@@ -115,8 +110,6 @@ PR.App = function () {
             },
 
             _routeChanged: function (e) {
-//                this._clearHeader();
-//                this._unlockModalUI(e.view);
                 this._currentRouteHandler = e.routeHandler;
                 this._currentView = e.view;
             },

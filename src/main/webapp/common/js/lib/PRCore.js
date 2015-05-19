@@ -1,5 +1,6 @@
 var PR = PR || {};
 PR.Views = {};
+PR.Models = {};
 
 PR.BaseView = function () {
 };

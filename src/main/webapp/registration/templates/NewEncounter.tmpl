@@ -8,7 +8,7 @@
                                 <div class="control-group-MSR">
                                      <label class="control-label" id="medical-service-menu-label">Medical Service</label>
                                      <div class="controls">
-                                         <select class="span3" id="medical-service-menu">
+                                         <select class="span3" id="medical-service-menu" tabindex="-1">
                                             <option value="inpatient">Inpatient</option>
                                             <option value="outpatient">Outpatient</option>
                                          </select>
@@ -21,59 +21,80 @@
             <div id="new-encounter-forms">
 
             </div>
+            <div class="modal-footer" id="new-encounter-footer-bar" style="display: block;">
+                <div class="button-bar-right pull-right">
+                    <div class="btn-group pad-btm-10 pad-right-20">
+                        <div class="btn-group">
+                            <button class="btn btn-primary" id="new-encounter-save-button" tabindex="1001">Save</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </script>
 
-<script type="text/html" data-type="template" data-templatename="newEncounterQuickFormTemplate">
+<script type="text/html" data-type="template" data-templatename="newEncounterFormTemplate">
     <div id="quick-form">
         <div class="row pad-btm-10">
              <div class="span16">
                  <div>
                      <form class="form-horizontal flexible">
-                         <div class="span7">
+                         <div class="span7 pad-left-20">
                              <h2 class="patient-section-title">patient</h2>
                              <div class="pad-top-10 columnsLargeTiles">
                                  <fieldset>
                                      <div class="control-group">
-                                         <label class="control-label" id="quick-scheduling-name-label"><span class="validation-required-prefix">*</span>Name</label>
+                                         <label class="control-label" id="quick-form-name-label"><span class="validation-required-prefix">*</span>Name</label>
                                          <div class="controls">
-                                             <input type="text" class="span5" id="quick-scheduling-name" data-model="fullName">
+                                             <input type="text" class="span5" id="quick-form-name" data-model="fullName" tabindex="1">
                                          </div>
                                      </div>
                                      <div class="control-group">
                                          <label class="control-label"><span class="validation-required-prefix">*</span>Gender</label>
                                          <div class="controls">
-                                             <label class="radio inline" id="quick-scheduling-gender-m-label">
-                                                 <input type="radio" name="quick-scheduling-gender" value="M" id="quick-scheduling-gender-m" data-model="gender">
+                                             <label class="radio inline" id="quick-form-gender-m-label">
+                                                 <input type="radio" name="quick-form-gender" value="M" id="quick-form-gender-m" data-model="gender" tabindex="2">
                                                  Male
                                              </label>
-                                             <label class="radio inline" id="quick-scheduling-gender-f-label">
-                                                 <input type="radio" name="quick-scheduling-gender" value="F" id="quick-scheduling-gender-f" data-model="gender">
+                                             <label class="radio inline" id="quick-form-gender-f-label">
+                                                 <input type="radio" name="quick-form-gender" value="F" id="quick-form-gender-f" data-model="gender" tabindex="3">
                                                  Female
                                              </label>
-                                             <label class="radio inline" id="quick-scheduling-gender-u-label">
-                                                 <input type="radio" name="quick-scheduling-gender" value="U" id="quick-scheduling-gender-u" data-model="gender">
+                                             <label class="radio inline" id="quick-form-gender-u-label">
+                                                 <input type="radio" name="quick-form-gender" value="U" id="quick-form-gender-u" data-model="gender" tabindex="4">
                                                  Unknown
                                              </label>
                                          </div>
                                      </div>
                                      <div class="control-group">
-                                         <label class="control-label" id="quick-scheduling-dob-label"><span class="validation-required-prefix">*</span>Date of Birth</label>
+                                         <label class="control-label" id="quick-form-dob-label"><span class="validation-required-prefix">*</span>Date of Birth</label>
                                          <div class="controls">
-                                             <input class="span4 formIcon" type="text" id="quick-scheduling-dob" data-model="dob" data-date-format="MMM-dd-yyyy HHmm" data-type="date">
+                                             <input class="span4 formIcon" type="text" id="quick-form-dob" data-model="dob" data-date-format="MMM-dd-yyyy HHmm" data-type="date" tabindex="5">
                                              <div class="row pull-right">
                                                  <label class="checkbox inline pointer">
-                                                     <input class="unknown-dob-checkbox" type="checkbox" name="unknownDob" id="quick-scheduling-unknown-dob">
+                                                     <input class="unknown-dob-checkbox" type="checkbox" name="unknownDob" id="quick-form-unknown-dob" tabindex="6">
                                                      <span class="inlineLabel">Unknown</span>
                                                  </label>
                                              </div>
                                          </div>
                                      </div>
-                                     <div class="control-group">
-                                         <label class="control-label" id="quick-scheduling-phone-number-label"><span class="validation-required-prefix">*</span>Phone Number</label>
+                                     <div class="control-group js-full-form {{if isQuickForm}}hide{{/if}}">
+                                         <label class="control-label" id="quick-form-city-label">City of Birth</label>
                                          <div class="controls">
-                                             <input type="text" class="span5" id="quick-scheduling-phone-number" data-model="phoneNumber" data-field='phoneNumber'>
+                                             <input class="span5 " type="text" id="quick-form-city" data-model="city" tabindex="5">
+                                         </div>
+                                     </div>
+                                     <div class="control-group">
+                                         <label class="control-label" id="quick-form-phone-number-label"><span class="validation-required-prefix">*</span>Phone Number</label>
+                                         <div class="controls">
+                                             <input type="text" class="span5" id="quick-form-phone-number" data-model="phoneNumber" data-field='phoneNumber' tabindex="7">
+                                         </div>
+                                     </div>
+                                     <div class="control-group">
+                                         <label class="control-label" id="quick-form-attending-physician-label"><span class="validation-required-prefix">*</span>Attending Physician</label>
+                                         <div class="controls">
+                                             <input type="text" class="span5" id="quick-form-attending-physician" data-model="attendingPhysician" data-field='attendingPhysician' tabindex="8">
                                          </div>
                                      </div>
                                  </fieldset>
@@ -84,21 +105,21 @@
                              <div class="pad-top-10 columnsLargeTiles">
                                  <fieldset>
                                      <div class="control-group">
-                                         <label class="control-label" id="quick-scheduling-dob-label"><span class="validation-required-prefix">*</span>Expected / Registration</label>
+                                         <label class="control-label" id="quick-form-expected-registration-label"><span class="validation-required-prefix">*</span>Expected / Registration</label>
                                              <div class="controls">
-                                                 <input class="span5" type="text" id="quick-scheduling-dob" data-model="intakeDate" data-date-format="MMM-dd-yyyy HHmm" data-type="date">
+                                                 <input class="span5" type="text" style='margin-top: 8px;' id="quick-form-expected-registration" data-model="intakeDate" tabindex="9">
                                              </div>
                                      </div>
                                      <div class="control-group">
-                                         <label class="control-label pointer" for="quick-scheduling-pre-registered" id="quick-scheduling-pre-registered-label">Create Pre-Registered Encounter</label>
+                                         <label class="control-label pointer" for="quick-form-pre-registered" id="quick-form-pre-registered-label">Create Pre-Registered Encounter</label>
                                          <div class="controls">
-                                             <input type="checkbox" class="pull-left" id="quick-scheduling-pre-registered" data-model="fullRegisteredAdmitted" tabindex="24">
+                                             <input type="checkbox" class="pull-left" style='margin-top: 10px;' id="quick-form-pre-registered" data-model="fullRegisteredAdmitted" tabindex="10">
                                          </div>
                                      </div>
-                                     <div class="control-group" id="quick-scheduling-registration-type-select">
-                                         <label class="control-label" id="quick-scheduling-registration-type-label"><span class="validation-required-prefix">*</span>Registration Type</label>
+                                     <div class="control-group" id="quick-form-registration-type-select">
+                                         <label class="control-label" id="quick-form-registration-type-label"><span class="validation-required-prefix">*</span>Registration Type</label>
                                          <div class="controls">
-                                             <select class="span5" id="quick-scheduling-registration-type" name="registrationType" data-model="registrationType" tabindex="25">
+                                             <select class="span5" id="quick-form-registration-type" name="registrationType" data-model="registrationType" tabindex="11">
                                                  <option value="">(Select one)</option>
                                                  <option value="E">One Time</option>
                                                  <option value="R">Recurring</option>
@@ -106,15 +127,112 @@
                                          </div>
                                      </div>
                                      <div class="control-group">
-                                         <label class="control-label" id="quick-scheduling-insurance-name-label"><span class="validation-required-prefix" style="display: none;">*</span>Primary Insurance</label>
+                                         <label class="control-label" id="quick-form-insurance-name-label"><span class="validation-required-prefix" style="display: none;">*</span>Primary Insurance</label>
                                          <div class="controls">
-                                             <div class="input-append smartsearch-container">
-                                                 <input type="text" class="span5 _smartsearch-input _smartsearch-6" id="quick-scheduling-insurance-name" data-model="insuranceName" placeholder="Insurance Name, Insurance Id" maxlength="25" tabindex="26">
-                                                 <input type="hidden" id="quick-scheduling-insurance-name" data-model="insurancePlanName" tabindex="27" value="">
-                                                 <input type="hidden" id="quick-scheduling-insurance-company-id" data-model="insuranceCompanyId" tabindex="28" value="">
-                                             </div>
-                                             <div class="_smartsearch-dropdown dropdown" id="_smartsearch-6-dropdown"><ul class="dropdown-menu" style="width: auto;"></ul></div>
+                                             <select class="span5" id="quick-form-insurance-name" data-model="insuranceName" tabindex="11">
+                                                <option value="VIC">Vito Insurances</option>
+                                                <option value="VP">Vorizh Plan</option>
+                                             </select>
+                                         </div>
+                                     </div>
+                                     <div class="control-group">
+                                         <label class="control-label" id="quick-form-policy-label">Policy # / Member ID</label>
+                                         <div class="controls">
+                                             <input type="text" class="span5" id="quick-form-policy" data-model="policyNumber" tabindex="12">
+                                         </div>
+                                     </div>
+                                     <div class="control-group">
+                                         <label class="control-label pointer" for="quick-form-same-as-patient" id="quick-form-same-as-patient-label">Insured is Same as Patient</label>
+                                         <div class="controls">
+                                             <input type="checkbox" class="pull-left" style='margin-top: 10px;' id="quick-form-same-as-patient" tabindex="13">
+                                         </div>
+                                     </div>
 
+                                     <div class="control-group">
+                                         <label class="control-label" id="quick-form-insureds-name-label"><span class="validation-required-prefix" style="display: inline-block;">*</span>Insured's Name</label>
+                                         <div class="controls">
+                                             <input type="text" class="span5" id="quick-form-insureds-name" data-model="insuredName" maxlength="25" tabindex="14">
+                                         </div>
+                                     </div>
+
+                                     <div class="control-group">
+                                         <label class="control-label" id="quick-form-insureds-gender-label"><span class="validation-required-prefix" style="display: inline-block;">*</span>Insured's Gender</label>
+                                         <div class="controls">
+                                             <label class="radio inline" id="quick-form-insureds-gender-m-label">
+                                                 <input type="radio" name="quick-form-insureds-gender" value="M" id="quick-form-insureds-gender-m" data-model="insuredGender" tabindex="15">
+                                                 Male
+                                             </label>
+                                             <label class="radio inline" id="quick-form-insureds-gender-f-label">
+                                                 <input type="radio" name="quick-form-insureds-gender" value="F" id="quick-form-insureds-gender-f" data-model="insuredGender" tabindex="16">
+                                                 Female
+                                             </label>
+                                             <label class="radio inline" id="quick-form-insureds-gender-u-label">
+                                                 <input type="radio" name="quick-form-insureds-gender" value="U" id="quick-form-insureds-gender-u" data-model="insuredGender" tabindex="17">
+                                                 Unknown
+                                             </label>
+                                          </div>
+                                     </div>
+
+                                     <div class="control-group">
+                                         <label class="control-label" id="quick-form-insureds-relationship-label"><span class="validation-required-prefix" style="display: inline-block;">*</span>Insured's Relation to Patient</label>
+                                         <div class="controls">
+                                             <select class="span5" style='margin-top: 8px;' id="quick-form-insureds-relationship" data-model="insuredRelationship" tabindex="18">
+                                                 <option value="">(Select one)</option>
+                                                 <option value="G8">G8 - Other Relationship</option>
+                                                 <option value="01">01 - Spouse</option>
+                                                 <option value="04">04 - Grandfather Or Grandmother</option>
+                                                 <option value="05">05 - Grandson Or Granddaughter</option>
+                                                 <option value="07">07 - Nephew Or Niece</option>
+                                                 <option value="10">10 - Foster Child</option>
+                                                 <option value="15">15 - Ward Of The Court</option>
+                                                 <option value="17">17 - Stepson Or Stepdaughter</option>
+                                                 <option value="18">18 - Self</option>
+                                                 <option value="19">19 - Child</option>
+                                                 <option value="20">20 - Employee</option>
+                                                 <option value="21">21 - Unknown</option>
+                                                 <option value="22">22 - Handicapped Dependent</option>
+                                                 <option value="23">23 - Sponsored Dependent</option>
+                                                 <option value="24">24 - Dependent Of A Minor Dependent</option>
+                                                 <option value="29">29 - Significant Other</option>
+                                                 <option value="32">32 - Mother</option>
+                                                 <option value="33">33 - Father</option>
+                                                 <option value="36">36 - Emancipated Minor</option>
+                                                 <option value="39">39 - Organ Donor</option>
+                                                 <option value="40">40 - Cadaver Donor</option>
+                                                 <option value="41">41 - Injured Plantiff</option>
+                                                 <option value="43">43 - Child Insured Has No Fin. Resp</option>
+                                                 <option value="53">53 - Life Partner</option>
+                                                 <option value="60">60 - Aunt</option>
+                                                 <option value="61">61 - Uncle</option>
+                                                 <option value="63">63 - Friend</option>
+                                                 <option value="64">64 - Son</option>
+                                                 <option value="65">65 - Daughter</option>
+                                                 <option value="66">66 - Brother</option>
+                                                 <option value="67">67 - Sister</option>
+                                                 <option value="68">68 - Daughter In Law</option>
+                                                 <option value="69">69 - Son In Law</option>
+                                                 <option value="70">70 - Sister In Law</option>
+                                                 <option value="71">71 - Brother In Law</option>
+                                                 <option value="72">72 - Step Mother</option>
+                                                 <option value="73">73 - Step Father</option>
+                                                 <option value="74">74 - Legal Guardian</option>
+                                             </select>
+                                         </div>
+                                     </div>
+
+                                     <div class="control-group">
+                                         <label class="control-label" id="quick-form-insureds-dob-label"><span class="validation-required-prefix" style="display: none;">*</span>Insured's DOB</label>
+                                         <div class="controls">
+                                             <div class="input-append">
+                                                 <input class="span5" type="text" id="quick-form-insureds-dob" data-model="insuredDob" data-type="date" tabindex="19">
+                                             </div>
+                                         </div>
+                                     </div>
+
+                                     <div class="control-group">
+                                         <label class="control-label pointer" for="quick-form-visit-only" id="quick-form-visit-only-label">This Visit Only</label>
+                                         <div class="controls">
+                                             <input type="checkbox" class="pull-left" style='margin-top: 8px;' id="quick-form-visit-only" data-model="visitOnly" tabindex="20">
                                          </div>
                                      </div>
                                  </fieldset>

@@ -8,7 +8,7 @@
             medicalServiceCodeNextButton: ".medical-service-code-button-next",
             medicalServiceCodeBody: ".medical-service-code-body",
             medicalServiceCodeMenu: "#medical-service-modal-menu",
-            closeMedicalServiceCodeButton: '.close-medical-service-code-modal-button'
+            closeMedicalServiceCodeButton: '.medical-service-code-button-close'
         },
 
         initialize: function (options) {
@@ -29,65 +29,23 @@
             $(this._html).modal({ backdrop: 'static', keyboard: false });
         },
 
-        _checkReadyStatus: function () {
-            if (this._repository.isDataReady() && (!this._hasValidPatient() || (this._repository.isDataReady() && !this._dataReadyFlag))) {
-                this._dataReady();
-                commonUI.unblock();
-            }
-        },
-
-        _dataReady: function () {
-            this._dataReadyFlag = true;
-            this._loadTemplate($.proxy(this._updateMedicalServicesMenu, this));
-        },
-
-        _hasPatientId: function () {
-            return ($.isNumeric(this._patientId) && this._patientId > 0) ? true : false;
-        },
-
-        _hasValidPatient: function () {
-            var patientData = this._repository.getPatientData();
-            return (this._hasPatientId() && patientData && patientData.mrn && patientData.demographics);
-        },
-
-        _updateMedicalServicesMenu: function (data) {
-            var options = $.render.encounterDetailedMedicalServiceSelectOptionTemplate({
-                code: '',
-                description: '(Select one)',
-                selected: false,
-                medicalServiceType: '',
-                medicalServiceTypeCode: '',
-                serviceTypeCode: '',
-                schedulingRequired: '',
-                autodischarge: ''
-            });
-            _.each(_.filter(data, this.filterMedicalServices), function (item) {
-                options += $.render.encounterDetailedMedicalServiceSelectOptionTemplate({
-                    code: item.code,
-                    description: item.description,
-                    selected: false,
-                    medicalServiceType: item.medicalServiceType,
-                    medicalServiceTypeCode: item.medicalServiceTypeCode,
-                    schedulingRequired: item.schedulingRequired,
-                    inpatient: item.inpatient,
-                    autodischarge: item.autodischarge
-                });
-            });
-            this.getElement("medicalServiceCodeMenu").html(options);
-            this.getElement("medicalServiceCodeMenu").focus();
-        },
-
         _nextButtonHandler: function() {
             this._medicalService = $(this._selectors.medicalServiceCodeMenu).val();
             this.onNextBtnClick(this._medicalService);
         },
 
+        _closeButtonHandler: function() {
+            PR.controller.navigate("#patientList", {trigger: true});
+        },
+
         _postRender: function () {
             this._addEventHandlers();
+            $(this._selectors.medicalServiceCodeNextButton).focus()
         },
 
         _addEventHandlers: function () {
             $(this._selectors.medicalServiceCodeNextButton).on('click', $.proxy(this._nextButtonHandler, this));
+            $(this._selectors.closeMedicalServiceCodeButton).on('click', $.proxy(this._closeButtonHandler, this));
         },
 
         _destroy: function() {
@@ -105,14 +63,10 @@
         },
 
         render: function () {
-            var callback = function (data) {
-                this._updateMedicalServicesMenu(data.services);
-            };
             this._loadTemplate($.proxy(function() {
                 this._initModal();
                 this.$el = $(this._selector);
                 this._postRender();
-//                HMS.SDS.PAM.getMedicalServices($.proxy(callback, this));
             }, this));
             return this;
         }
