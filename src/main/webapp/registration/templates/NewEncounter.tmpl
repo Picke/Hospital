@@ -80,9 +80,9 @@
                                          </div>
                                      </div>
                                      <div class="control-group js-full-form {{if isQuickForm}}hide{{/if}}">
-                                         <label class="control-label" id="quick-form-city-label">City of Birth</label>
+                                         <label class="control-label" id="quick-form-city-of-birth-label">City of Birth</label>
                                          <div class="controls">
-                                             <input class="span5 " type="text" id="quick-form-city" data-model="city" tabindex="5">
+                                             <input class="span5 " type="text" id="quick-form-city-of-birth" data-model="city" tabindex="5">
                                          </div>
                                      </div>
                                      <div class="control-group">
@@ -95,6 +95,18 @@
                                          <label class="control-label" id="quick-form-attending-physician-label"><span class="validation-required-prefix">*</span>Attending Physician</label>
                                          <div class="controls">
                                              <input type="text" class="span5" id="quick-form-attending-physician" data-model="attendingPhysician" data-field='attendingPhysician' tabindex="8">
+                                         </div>
+                                     </div>
+                                     <div class="control-group js-full-form {{if isQuickForm}}hide{{/if}} pad-btm-10">
+                                         <label class="control-label" id="quick-form-address-label"><span class="validation-required-prefix">*</span>Address</label>
+                                         <div class="controls pad-btm-10">
+                                             <input type="text" class="span5" id="quick-form-street" data-model="street" data-field='street' tabindex="10" placeholder='Street'>
+                                         </div>
+                                         <div class="controls pad-btm-10">
+                                             <input type="text" class="span5" id="quick-form-zip" data-model="zip" data-field='zip' placeholder='Zip' tabindex="11">
+                                         </div>
+                                         <div class="controls">
+                                             <input type="text" class="span5" id="quick-form-city" data-model="city" data-field='city' placeholder='City' tabindex="12">
                                          </div>
                                      </div>
                                  </fieldset>
@@ -130,6 +142,17 @@
                                          <label class="control-label" id="quick-form-insurance-name-label"><span class="validation-required-prefix" style="display: none;">*</span>Primary Insurance</label>
                                          <div class="controls">
                                              <select class="span5" id="quick-form-insurance-name" data-model="insuranceName" tabindex="11">
+                                                <option value="ALLNZ">Allianz Ukraine</option>
+                                                <option value="ASKA">ASKA</option>
+                                                <option value="AXA">AXA</option>
+                                                <option value="INGO">INGO Ukraine</option>
+                                                <option value="LIFE">Life</option>
+                                                <option value="LMMA">Lemma</option>
+                                                <option value="ORNT">Oranta</option>
+                                                <option value="PRVDN">Providna</option>
+                                                <option value="PZU">PZU Ukraine</option>
+                                                <option value="UNIQA">UNIQA</option>
+                                                <option value="VIG">Vienna Insurance Group</option>
                                                 <option value="VIC">Vito Insurances</option>
                                                 <option value="VP">Vorizh Plan</option>
                                              </select>

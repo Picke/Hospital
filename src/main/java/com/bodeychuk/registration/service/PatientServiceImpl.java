@@ -3,7 +3,7 @@ package com.bodeychuk.registration.service;
 import com.bodeychuk.registration.comparator.EncountersComparator;
 import com.bodeychuk.registration.dao.PatientDao;
 import com.bodeychuk.registration.model.Encounter;
-import com.bodeychuk.registration.model.EncounterLargeTileModel;
+import com.bodeychuk.registration.model.EncounterFullModel;
 import com.bodeychuk.registration.model.Patient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -32,8 +32,14 @@ public class PatientServiceImpl implements PatientService {
     }
 
     @Override
-    public EncounterLargeTileModel getEncounterLargeTileModel(int patientId, int encounterId) {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+    public EncounterFullModel getEncounterData(int encounterId) {
+        return patientDao.getEncounterByEncounterId(encounterId);
+    }
+
+    @Override
+    public EncounterFullModel getPatientData(int patientId) {
+        int encounterId = patientDao.getEncounterIdByPatientId(patientId);
+        return getEncounterData(encounterId);
     }
 
 }

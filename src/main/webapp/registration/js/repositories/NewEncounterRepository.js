@@ -1,7 +1,22 @@
 PR.createNS('PR.Repositories');
 
 PR.Repositories.NewEncounterRepository = function () {
-    //used for debugging only
-    var a;
-    var b;
+    var self = new PR.BaseView();
+    var eventsPublisher = PR.BaseView.prototype;
+
+    self.patientData = null;
+
+    self._loadPatientData = function (patientId) {
+        return PR.SDS.Common._loadPatientData(patientId, function (data) {
+            self.patientData = data;
+            eventsPublisher.publish('patientData:loaded')
+        })
+    };
+
+    self._getPatientData = function () {
+        return self.patientData;
+    };
+
+    return self;
+
 }

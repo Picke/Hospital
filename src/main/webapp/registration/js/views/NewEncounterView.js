@@ -8,18 +8,37 @@ PR.Views.NewEncounterView = PR.Views.BaseView.extend({
         newEncounterForms: '#new-encounter-forms',
         medicalService: '#medical-service-menu',
         saveButton: '#new-encounter-save-button',
-        name: '#quick-form-name',
-        dob: '#quick-form-dob',
-        phone: '#quick-form-phone-number',
-        intakeDate: '#quick-form-expected-registration',
-        insuranceName: '#quick-form-insurance-name',
         unknownDobCheckbox: '#quick-form-unknown-dob',
-        insuredsDOB: '#quick-form-insureds-dob'
+        fields: {
+            patientName: '#quick-form-name',
+            patientDOB: '#quick-form-dob',
+            cityOfBirth: '#quick-form-city-of-birth',
+            phone: '#quick-form-phone-number',
+            physician: '#quick-form-attending-physician',
+            street: '#quick-form-street',
+            zip: '#quick-form-zip',
+            city: '#quick-form-city',
+            intakeDate: '#quick-form-expected-registration',
+            registrationType: '#quick-form-registration-type',
+            primaryInsurance: '#quick-form-insurance-name',
+            policyNumber: '#quick-form-policy',
+            insuredsName: '#quick-form-insureds-name',
+            insuredsRelation: '#quick-form-insureds-relationship',
+            insuredsDOB: '#quick-form-insureds-dob'
+        },
+        radio: {
+            patientGender: 'quick-form-gender',
+            insuredsGender: 'quick-form-insureds-gender'
+        }
     },
+
+    fields: [],
+
+    eventsPublisher: PR.BaseView.prototype,
 
     initialize: function (options) {
         this._patientId = options.patientId;
-        this._repository = options.repo;
+        this._repository = options.repository;
         this.msc = options.msc;
         this._build();
     },
@@ -30,13 +49,18 @@ PR.Views.NewEncounterView = PR.Views.BaseView.extend({
     },
 
     _postRender: function () {
-        this.renderForm();
-        $(this._selectors.name).focus();
-        this.applySelect2ToInsuranceField();
-        this.setMasks();
-        this.setRegistrationDate();
-        this.initEventHandlers();
-        $(this._selectors.saveButton).on('click', $.proxy(this._onSaveClicked, this));
+        this.eventsPublisher.on('patientData:loaded', $.proxy(function () {
+            this.renderForm();
+            $(this._selectors.name).focus();
+            this.applySelect2ToInsuranceField();
+            this.setMasks();
+            this._patientId && this.setFieldsValues();
+            this._patientId && this.setRadioValues();
+            this.setRegistrationDate();
+            this.initEventHandlers();
+            $(this._selectors.saveButton).on('click', $.proxy(this._onSaveClicked, this));
+        }, this))
+        !this._patientId && this.eventsPublisher.publish('patientData:loaded');
     },
 
     renderForm: function () {
@@ -45,31 +69,33 @@ PR.Views.NewEncounterView = PR.Views.BaseView.extend({
             isQuickForm: isQuickForm
         })
         $(this._selectors.newEncounterForms).html(html);
+        $(this._selectors.medicalService).val(this.msc);
         $(this._selectors.newEncounterForms).hide().fadeIn('slow');
     },
 
     applySelect2ToInsuranceField: function () {
-        PR.Utils.applySelect2($(this._selectors.insuranceName), {
+        PR.Utils.applySelect2($(this._selectors.fields.primaryInsurance), {
             allowClear: true,
             placeholder: "Insurance Name/ Insurance Id"
         });
-        $(this._selectors.insuranceName).select2('val', '');
+        var insurance = this._patientId ? this._repository._getPatientData()['primaryInsurance'] : '';
+        $(this._selectors.fields.primaryInsurance).select2('val', insurance);
     },
 
     setMasks: function () {
-        PR.Utils.maskInput($(this._selectors.dob));
-        PR.Utils.maskInput($(this._selectors.intakeDate));
-        PR.Utils.maskInput($(this._selectors.insuredsDOB));
-        PR.Utils.applyPhoneMask($(this._selectors.phone), {maskType: 'n'});
+        PR.Utils.maskInput($(this._selectors.fields.patientDOB));
+        PR.Utils.maskInput($(this._selectors.fields.intakeDate));
+        PR.Utils.maskInput($(this._selectors.fields.insuredsDOB));
+        PR.Utils.applyPhoneMask($(this._selectors.fields.phone), {maskType: 'n'});
     },
 
     setRegistrationDate: function () {
         var todayDate = new Date();
-        $(this._selectors.intakeDate).val(('0' + todayDate.getDate()).slice(-2) + '/' + ('0' + (todayDate.getMonth() + 1)).slice(-2) + '/' + todayDate.getFullYear())
+        $(this._selectors.fields.intakeDate).val(('0' + todayDate.getDate()).slice(-2) + '/' + ('0' + (todayDate.getMonth() + 1)).slice(-2) + '/' + todayDate.getFullYear())
     },
 
     initEventHandlers: function () {
-        $(this._selectors.medicalService).on('change', $.proxy(function (e) {
+        $(this._selectors.medicalService).off('change').on('change', $.proxy(function (e) {
             if ($(e.target).val() == 'inpatient') {
                 this.hideFullPatientInfo();
             } else {
@@ -79,10 +105,19 @@ PR.Views.NewEncounterView = PR.Views.BaseView.extend({
         }, this));
         $(this._selectors.unknownDobCheckbox).on('click', $.proxy(function (e) {
             $(e.target).is(':checked') ?
-                $(this._selectors.dob).prop('disabled', true) :
-                $(this._selectors.dob).prop('disabled', false);
-            $(this._selectors.dob).val('');
+                $(this._selectors.fields.dob).prop('disabled', true) :
+                $(this._selectors.fields.dob).prop('disabled', false);
+            $(this._selectors.fields.dob).val('');
         }, this))
+        $('input[type=text]')
+            .focusout(this.onChangeFieldInfo)
+            .keyup(this.onChangeFieldInfo);
+    },
+
+    onChangeFieldInfo: function () {
+        ($(this).val() == '' && $(this).closest('.control-group').find('.validation-required-prefix').is(':visible')) ?
+            $(this).closest('.control-group').addClass('error') :
+            $(this).closest('.control-group').removeClass('error')
     },
 
     hideFullPatientInfo: function () {
@@ -93,7 +128,27 @@ PR.Views.NewEncounterView = PR.Views.BaseView.extend({
         $('.js-full-form').removeClass('hide');
     },
 
-    _onSaveClicked: function () {
+    setFieldsValues: function () {
+        _.each(this._selectors.fields, function (el, prop) {
+            $(el).val(this._repository._getPatientData()[prop]);
+        }, this)
+    },
 
+    setRadioValues: function () {
+        _.each(this._selectors.radio, function (el, prop) {
+            var index = 2;
+            switch (this._repository._getPatientData()[prop]) {
+                case 'M' :
+                    index = 0;
+                    break;
+                case 'F' :
+                    index = 1;
+            }
+            $('input[name=' + el + ']')[index].checked = true;
+        }, this)
+    },
+
+    _onSaveClicked: function () {
+        var a;
     }
 })

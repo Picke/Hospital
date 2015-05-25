@@ -16,8 +16,8 @@ PR.App = function () {
 
             routes: {
                 "new-encounter": "newEncounter",
-                "patient-chart/:patientId/:encounterId/:tileCode": "enconterDeatailed",
-                "patient-chart/:patientId/:encounterId/:tileCode/": "enconterDeatailed",
+                "new-encounter/:patientId": "newEncounter",
+                "encounter/:patientId/:encounterId/:tileCode": "enconterDeatailed",
                 "*path": "home",
                 "*path/:tab": "home"
             },
@@ -26,13 +26,7 @@ PR.App = function () {
                 $.when(this._initViews())
                     .done($.proxy(function () {
                         this._renderHeaderBar(),
-//                this._attachGlobalHandlers();
                         this._attachEvents()
-//                Temporary fix by setTimeout
-//                setTimeout(function () {
-//                    _errorBar = HMS.Controls.ErrorBar();
-//                    _errorBar.render();
-//                }, 100);
                     }, this));
             },
 
@@ -85,6 +79,7 @@ PR.App = function () {
                             patientId,
                             repo,
                             msc);
+                        patientId && repo._loadPatientData(patientId);
                         this._preDestroyCurrentView();
                         this._routeChanged({view: newEncounterView, routeHandler: 'newEncounter'});
                     }, this);

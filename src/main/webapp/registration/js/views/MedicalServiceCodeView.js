@@ -14,6 +14,7 @@
         initialize: function (options) {
             var patientId = (typeof options.patientId != 'undefined') ? options.patientId : null;
             this.onNextBtnClick = _.isFunction(options.onNextBtnClick) ? options.onNextBtnClick : $.noop;
+            $(this._selectors.medicalServiceCodeMenu).val('inpatient');
             this._patientId = $.isNumeric(patientId) ? patientId : null;
             this._medicalService = null;
             this.parentView = options.parentView;
@@ -32,6 +33,8 @@
         _nextButtonHandler: function() {
             this._medicalService = $(this._selectors.medicalServiceCodeMenu).val();
             this.onNextBtnClick(this._medicalService);
+            $('.modal').remove();
+            $('.modal-backdrop').remove();
         },
 
         _closeButtonHandler: function() {
@@ -49,10 +52,8 @@
         },
 
         _destroy: function() {
-            var preBookedAppointmentKey = HMS.PAM.Constants.Appointments.Calendar.PreBookedAppointmentKey;
-            HMS.MemoryStorage.remove(preBookedAppointmentKey);
-            $('.modal-backdrop').remove();
-            this.remove();
+
+//            this.remove();
         },
 
         _preDestroy: function() {

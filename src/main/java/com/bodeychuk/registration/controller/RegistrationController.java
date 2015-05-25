@@ -1,7 +1,7 @@
 package com.bodeychuk.registration.controller;
 
 import com.bodeychuk.registration.model.Encounter;
-import com.bodeychuk.registration.model.EncounterLargeTileModel;
+import com.bodeychuk.registration.model.EncounterFullModel;
 import com.bodeychuk.registration.service.PatientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -34,14 +34,22 @@ public class RegistrationController {
         return encounters;
     }
 
-    @RequestMapping(value =  "/patient/{pcn}/encounter/{ern}/data", method = RequestMethod.GET)
+    @RequestMapping(value =  "/encounter/{mrn}/data", method = RequestMethod.GET)
     public
     @ResponseBody
-    EncounterLargeTileModel getEncounterData (
-            @PathVariable("pcn") Integer patientId,
+    EncounterFullModel getEncounterData (
             @PathVariable("ern") Integer encounterId) {
-        EncounterLargeTileModel encounterLargeTileModel =  patientService.getEncounterLargeTileModel(patientId, encounterId);
+        EncounterFullModel encounterLargeTileModel =  patientService.getEncounterData(encounterId);
         return encounterLargeTileModel;
+    }
+
+    @RequestMapping(value =  "/patient/{pcn}/data", method = RequestMethod.GET)
+    public
+    @ResponseBody
+    EncounterFullModel getPatientData (
+            @PathVariable("pcn") Integer patientId) {
+        EncounterFullModel encounterFullModel =  patientService.getPatientData(patientId);
+        return encounterFullModel;
     }
 
 

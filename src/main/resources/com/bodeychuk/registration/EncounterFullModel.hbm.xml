@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.bodeychuk.registration.model.EncounterFullModel" table="encounter_data">
+        <id name="encounterId" type="int">
+            <column name="encounterId" length="11" />
+            <generator class="increment" />
+        </id>
+        <property name="patientName" type="string">
+            <column name="patientName" length="45" />
+        </property>
+        <property name="patientGender" type="string">
+            <column name="patientGender" length="2" />
+        </property>
+        <property name="patientDOB" type="string">
+            <column name="patientDOB" length="10" />
+        </property>
+        <property name="cityOfBirth" type="string">
+            <column name="cityOfBirth" length="45" />
+        </property>
+        <property name="phone" type="string">
+            <column name="phone" length="16" />
+        </property>
+        <property name="physician" type="string">
+            <column name="physician" length="45" />
+        </property>
+        <property name="street" type="string">
+            <column name="street" length="45" />
+        </property>
+        <property name="zip" type="string">
+            <column name="zip" length="6" />
+        </property>
+        <property name="city" type="string">
+            <column name="city" length="45" />
+        </property>
+        <property name="intakeDate" type="string">
+            <column name="intakeDate" length="45" />
+        </property>
+        <property name="registrationType" type="string">
+            <column name="registrationType" length="45" />
+        </property>
+        <property name="primaryInsurance" type="string">
+            <column name="primaryInsurance" length="45" />
+        </property>
+        <property name="policyNumber" type="string">
+            <column name="policyNumber" length="45" />
+        </property>
+        <property name="insuredsName" type="string">
+            <column name="insuredsName" length="45" />
+        </property>
+        <property name="insuredsGender" type="string">
+            <column name="insuredsGender" length="2" />
+        </property>
+        <property name="insuredsRelation" type="string">
+            <column name="insuredsRelation" length="45" />
+        </property>
+        <property name="insuredsDOB" type="string">
+            <column name="insuredsDOB" length="45" />
+        </property>
+    </class>
+</hibernate-mapping>

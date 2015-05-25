@@ -31,6 +31,7 @@
                 <value>com/bodeychuk/administration/UserRoles.hbm.xml</value>
                 <value>com/bodeychuk/registration/Encounter.hbm.xml</value>
                 <value>com/bodeychuk/registration/Patient.hbm.xml</value>
+                <value>com/bodeychuk/registration/EncounterFullModel.hbm.xml</value>
             </list>
         </property>
         <property name="hibernateProperties">

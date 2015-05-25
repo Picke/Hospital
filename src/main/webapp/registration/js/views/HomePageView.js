@@ -5,6 +5,7 @@ PR.Views.HomePageView = PR.Views.BaseView.extend({
 
     _selectors: {
         createPatientButton: "#create-patient-button",
+        addEncounterButton: '.js-add-encounter',
         patientList: "#patient-list",
         patientSearch: "#patient-search"
     },
@@ -29,6 +30,11 @@ PR.Views.HomePageView = PR.Views.BaseView.extend({
         });
         this.eventsPublisher.on('dataReady', $.proxy(function () {
             this._buildPatientList();
+            $(this._selectors.addEncounterButton).on("click", function (e) {
+                e.preventDefault();
+                var patientId = $(this).closest('.pad-top-20').data('patientid');
+                PR.controller.navigate("#new-encounter/"+ patientId, {trigger: true});
+            });
         }, this));
         $(this._selectors.patientSearch).on('keyup', this._patientSearch)
     },
@@ -37,9 +43,9 @@ PR.Views.HomePageView = PR.Views.BaseView.extend({
         var patientListEl = this._selectors.patientList;
         var html = "";
         $.each(this._repository._getPatientsData(), function (index, encounter) {
-            html += "<div class='row pad-top-20'>" +
+            html += "<div class='row pad-top-20' data-encounterid=" + encounter.encounterId + " data-patientid=" + encounter.patientId + ">" +
                 "<a href ='#encounter/" + encounter.patientId + "/" + encounter.encounterId + "/PD' style='display:inline-block' >" +
-                "<div class='row'><h2>" + encounter.patientName + "</h2></div>" +
+                "<div class='row'><h2 class='js-patient-name' style='display:inline-block'>" + encounter.patientName + "</h2><button class='btn pull-right pad-top-10 js-add-encounter'>Add encounter</button></div>" +
                 "<div class='row'> <div style='display: inline-block' class='patient-list-data'>PCN: " + encounter.patientId + "</div>" +
                 "<div style='display: inline-block' class='patient-list-data'>ERN: " + encounter.encounterId + "</div>" +
                 "<div style='display: inline-block' class='patient-list-data'>DOB: " + encounter.patientDob + "</div>" +
@@ -54,12 +60,18 @@ PR.Views.HomePageView = PR.Views.BaseView.extend({
 
     _patientSearch: function () {
         var el = $(this);
-        $("h2").each(function () {
+        $(".js-patient-name").each(function () {
+            var encounterId = $(this).closest('.pad-top-20').data('encounterid').toString();
+            var patientId = $(this).closest('.pad-top-20').data('patientid').toString();
             $(this).closest('.pad-top-20').show();
-            if ($(this).text().indexOf(el.val()) == -1) {
-                $(this).closest('.pad-top-20').hide();
+            if (($(this).text().indexOf(el.val()) == -1) &&
+                (encounterId.indexOf(el.val()) == -1) &&
+                (patientId.indexOf(el.val()) == -1)) {
+                    $(this).closest('.pad-top-20').hide();
             }
         })
     }
+
+
 
 });
