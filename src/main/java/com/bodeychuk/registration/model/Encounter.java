@@ -1,24 +1,20 @@
 package com.bodeychuk.registration.model;
 
-import java.util.Date;
-
 public class Encounter {
     private int encounterId;
     private String patientName;
     private String patientPhone;
-    private String patientAddress;
-    private Date patientDob;
-    private Date registrationDate;
+    private String patientDob;
+    private String registrationDate;
     private int patientId;
 
     public Encounter() {
     }
 
-    public Encounter(int encounterId, String patientName, String patientPhone, String patientAddress, Date patientDob, Date registrationDate) {
+    public Encounter(int encounterId, String patientName, String patientPhone, String patientDob, String registrationDate) {
         this.encounterId = encounterId;
         this.patientName = patientName;
         this.patientPhone = patientPhone;
-        this.patientAddress = patientAddress;
         this.patientDob = patientDob;
         this.registrationDate = registrationDate;
     }
@@ -47,27 +43,19 @@ public class Encounter {
         this.patientPhone = patientPhone;
     }
 
-    public String getPatientAddress() {
-        return patientAddress;
-    }
-
-    public void setPatientAddress(String patientAddress) {
-        this.patientAddress = patientAddress;
-    }
-
-    public Date getPatientDob() {
+    public String getPatientDob() {
         return patientDob;
     }
 
-    public void setPatientDob(Date patientDob) {
+    public void setPatientDob(String patientDob) {
         this.patientDob = patientDob;
     }
 
-    public Date getRegistrationDate() {
+    public String getRegistrationDate() {
         return registrationDate;
     }
 
-    public void setRegistrationDate(Date registrationDate) {
+    public void setRegistrationDate(String registrationDate) {
         this.registrationDate = registrationDate;
     }
 

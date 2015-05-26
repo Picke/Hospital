@@ -13,14 +13,14 @@
         <property name="patientPhone" type="string">
             <column name="patientPhone" length="45" />
         </property>
-        <property name="patientAddress" type="string">
-            <column name="patientAddress" length="200" />
-        </property>
-        <property name="patientDob" type="date">
+        <property name="patientDob" type="string">
             <column name="patientDob" />
         </property>
-        <property name="registrationDate" type="date">
+        <property name="registrationDate" type="string">
             <column name="registrationDate" />
+        </property>
+        <property name="patientId" type="int">
+            <column name="patientId" />
         </property>
     </class>
 </hibernate-mapping>

@@ -42,4 +42,13 @@ public class PatientServiceImpl implements PatientService {
         return getEncounterData(encounterId);
     }
 
+    @Override
+    public void addEncounter(int patientId, EncounterFullModel encounterFullModel) {
+        patientDao.addEncounterDetails(patientId, encounterFullModel);
+        Encounter encounter = new Encounter(encounterFullModel.getEncounterId(), encounterFullModel.getPatientName(), encounterFullModel.getPhone(),
+                encounterFullModel.getPatientDOB(), encounterFullModel.getIntakeDate());
+        encounter.setPatientId(patientId);
+        patientDao.addEncounter(encounter);
+    }
+
 }

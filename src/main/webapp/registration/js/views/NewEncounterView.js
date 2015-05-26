@@ -3,6 +3,8 @@ PR.Views.NewEncounterView = PR.Views.BaseView.extend({
     _patientId: null,
     _repository: null,
     msc: null,
+    saveObject: {},
+    saveModel: null,
 
     _selectors: {
         newEncounterForms: '#new-encounter-forms',
@@ -31,8 +33,6 @@ PR.Views.NewEncounterView = PR.Views.BaseView.extend({
             insuredsGender: 'quick-form-insureds-gender'
         }
     },
-
-    fields: [],
 
     eventsPublisher: PR.BaseView.prototype,
 
@@ -148,7 +148,27 @@ PR.Views.NewEncounterView = PR.Views.BaseView.extend({
         }, this)
     },
 
+    getFieldsValues: function () {
+        _.each(this._selectors.fields, function (el, prop) {
+            if ($(el).is(':visible')) {
+                this.saveObject[prop] = $(el).val();
+            }
+        }, this)
+    },
+
+    getRadioValues: function () {
+        _.each(this._selectors.radio, function (el, prop) {
+            this.saveObject[prop] =  $('input[name=' + el + ']:checked').val();
+        }, this)
+    },
+
     _onSaveClicked: function () {
-        var a;
+        this.getFieldsValues();
+        this.getRadioValues();
+        this.saveObject['patientId'] = this._patientId;
+        this.saveModel = new PR.Models.EncounterModel(this.saveObject);
+        this._repository._saveEncounter({patientId: this._patientId, model: this.saveModel}, $.proxy(function (data) {
+            PR.controller.navigate('encounter/' + data.encounterId + '/' + data.patientId);
+        }, this));
     }
 })

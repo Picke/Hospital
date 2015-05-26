@@ -20,7 +20,7 @@
     <script src="/common/js/lib/PRCore.Templates.js" type="text/javascript"></script>
     <script src="/common/js/Utils.js" type="text/javascript"></script>
 
-    <script src="/registration/js/models/NewEncounterQuickFormModel.js" type="text/javascript"></script>
+    <script src="/registration/js/models/EncounterModel.js" type="text/javascript"></script>
 
     <script src="/registration/js/views/BaseView.js" type="text/javascript"></script>
     <script src="/registration/js/views/HomePageView.js" type="text/javascript"></script>
@@ -30,6 +30,7 @@
 
     <script src="/registration/js/lib/jquery.inputmask.js" type="text/javascript"></script>
 
+    <script src="/registration/js/widgets/SDS.js" type="text/javascript"></script>
     <script src="/registration/js/widgets/SDSCommon.js" type="text/javascript"></script>
 
     <script src="/registration/require.templates.js" type="text/javascript"></script>

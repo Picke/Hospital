@@ -5,10 +5,7 @@ import com.bodeychuk.registration.model.EncounterFullModel;
 import com.bodeychuk.registration.service.PatientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
@@ -50,6 +47,17 @@ public class RegistrationController {
             @PathVariable("pcn") Integer patientId) {
         EncounterFullModel encounterFullModel =  patientService.getPatientData(patientId);
         return encounterFullModel;
+    }
+
+    @RequestMapping(value =  "/patient/{pcn}/save", method = RequestMethod.POST, consumes="application/json")
+    public
+    @ResponseBody
+    EncounterFullModel addEncounter (
+            @PathVariable("pcn") Integer patientId,
+            @RequestBody EncounterFullModel encounterLargeTileModel)
+            {
+        patientService.addEncounter(patientId, encounterLargeTileModel);
+        return encounterLargeTileModel;
     }
 
 

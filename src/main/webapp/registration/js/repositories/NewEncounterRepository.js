@@ -13,6 +13,10 @@ PR.Repositories.NewEncounterRepository = function () {
         })
     };
 
+    self._saveEncounter = function (data, successFn) {
+        PR.SDS._saveEncounter(data, successFn)
+    };
+
     self._getPatientData = function () {
         return self.patientData;
     };

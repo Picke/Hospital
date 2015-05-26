@@ -2,6 +2,7 @@ package com.bodeychuk.registration.model;
 
 public class EncounterFullModel {
     private int encounterId;
+    private int patientId;
     private String patientName;
     private String patientGender;
     private String patientDOB;
@@ -19,6 +20,31 @@ public class EncounterFullModel {
     private String insuredsGender;
     private String insuredsRelation;
     private String insuredsDOB;
+
+    public EncounterFullModel() {
+    }
+
+    public EncounterFullModel(int encounterId, int patientId, String patientName, String patientGender, String patientDOB, String cityOfBirth, String phone, String physician, String street, String zip, String city, String intakeDate, String registrationType, String primaryInsurance, String policyNumber, String insuredsName, String insuredsGender, String insuredsRelation, String insuredsDOB) {
+        this.encounterId = encounterId;
+        this.patientId = patientId;
+        this.patientName = patientName;
+        this.patientGender = patientGender;
+        this.patientDOB = patientDOB;
+        this.cityOfBirth = cityOfBirth;
+        this.phone = phone;
+        this.physician = physician;
+        this.street = street;
+        this.zip = zip;
+        this.city = city;
+        this.intakeDate = intakeDate;
+        this.registrationType = registrationType;
+        this.primaryInsurance = primaryInsurance;
+        this.policyNumber = policyNumber;
+        this.insuredsName = insuredsName;
+        this.insuredsGender = insuredsGender;
+        this.insuredsRelation = insuredsRelation;
+        this.insuredsDOB = insuredsDOB;
+    }
 
     public int getEncounterId() {
         return encounterId;
@@ -162,5 +188,13 @@ public class EncounterFullModel {
 
     public void setInsuredsDOB(String insuredsDOB) {
         this.insuredsDOB = insuredsDOB;
+    }
+
+    public int getPatientId() {
+        return patientId;
+    }
+
+    public void setPatientId(int patientId) {
+        this.patientId = patientId;
     }
 }
