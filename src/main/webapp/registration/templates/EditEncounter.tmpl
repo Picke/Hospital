@@ -1,4 +1,4 @@
-<script type="text/html" data-type="template" data-templatename="newEncounterTemplate">
+<script type="text/html" data-type="template" data-templatename="editEncounterTemplate">
     <div id="main">
         <div class="tileLarge row" id="new-encounter-screen" style="width: 1238; margin-left: -9px">
             <div class="row pad-btm-10">
@@ -8,7 +8,7 @@
                                 <div class="control-group-MSR">
                                      <label class="control-label" id="medical-service-menu-label">Medical Service</label>
                                      <div class="controls">
-                                         <select class="span3" id="medical-service-menu" tabindex="-1">
+                                         <select class="span3" style="cursor: default !important" id="medical-service-menu" tabindex="-1" disabled>
                                             <option value="inpatient">Inpatient</option>
                                             <option value="outpatient">Outpatient</option>
                                          </select>
@@ -18,7 +18,7 @@
                       </form>
                  </div>
             </div>
-            <div id="new-encounter-form">
+            <div id="edit-encounter-form">
 
             </div>
             <div class="modal-footer" id="new-encounter-footer-bar" style="display: block;">
@@ -34,8 +34,8 @@
     </div>
 </script>
 
-<script type="text/html" data-type="template" data-templatename="newEncounterFormTemplate">
-    <div id="quick-form">
+<script type="text/html" data-type="template" data-templatename="editEncounterFormTemplate">
+    <div id="edit-form">
         <div class="row pad-btm-10">
              <div class="span16">
                  <div>
@@ -45,68 +45,68 @@
                              <div class="pad-top-10 columnsLargeTiles">
                                  <fieldset>
                                      <div class="control-group">
-                                         <label class="control-label" id="quick-form-name-label"><span class="validation-required-prefix">*</span>Name</label>
+                                         <label class="control-label" id="edit-form-name-label"><span class="validation-required-prefix">*</span>Name</label>
                                          <div class="controls">
-                                             <input type="text" class="span5" id="quick-form-name" data-model="fullName" tabindex="1">
+                                             <input type="text" class="span5" id="edit-form-name" data-model="fullName" tabindex="1">
                                          </div>
                                      </div>
                                      <div class="control-group">
                                          <label class="control-label"><span class="validation-required-prefix">*</span>Gender</label>
                                          <div class="controls">
-                                             <label class="radio inline" id="quick-form-gender-m-label">
-                                                 <input type="radio" name="quick-form-gender" value="M" id="quick-form-gender-m" data-model="gender" tabindex="2">
+                                             <label class="radio inline" id="edit-form-gender-m-label">
+                                                 <input type="radio" name="edit-form-gender" value="M" id="edit-form-gender-m" data-model="gender" tabindex="2">
                                                  Male
                                              </label>
-                                             <label class="radio inline" id="quick-form-gender-f-label">
-                                                 <input type="radio" name="quick-form-gender" value="F" id="quick-form-gender-f" data-model="gender" tabindex="3">
+                                             <label class="radio inline" id="edit-form-gender-f-label">
+                                                 <input type="radio" name="edit-form-gender" value="F" id="edit-form-gender-f" data-model="gender" tabindex="3">
                                                  Female
                                              </label>
-                                             <label class="radio inline" id="quick-form-gender-u-label">
-                                                 <input type="radio" name="quick-form-gender" value="U" id="quick-form-gender-u" data-model="gender" tabindex="4">
+                                             <label class="radio inline" id="edit-form-gender-u-label">
+                                                 <input type="radio" name="edit-form-gender" value="U" id="edit-form-gender-u" data-model="gender" tabindex="4">
                                                  Unknown
                                              </label>
                                          </div>
                                      </div>
                                      <div class="control-group">
-                                         <label class="control-label" id="quick-form-dob-label"><span class="validation-required-prefix">*</span>Date of Birth</label>
+                                         <label class="control-label" id="edit-form-dob-label"><span class="validation-required-prefix">*</span>Date of Birth</label>
                                          <div class="controls">
-                                             <input class="span4 formIcon" type="text" id="quick-form-dob" data-model="dob" data-date-format="MMM-dd-yyyy HHmm" data-type="date" tabindex="5">
+                                             <input class="span4 formIcon" type="text" id="edit-form-dob" data-model="dob" data-date-format="MMM-dd-yyyy HHmm" data-type="date" tabindex="5">
                                              <div class="row pull-right">
                                                  <label class="checkbox inline pointer">
-                                                     <input class="unknown-dob-checkbox" type="checkbox" name="unknownDob" id="quick-form-unknown-dob" tabindex="6">
+                                                     <input class="unknown-dob-checkbox" type="checkbox" name="unknownDob" id="edit-form-unknown-dob" tabindex="6">
                                                      <span class="inlineLabel">Unknown</span>
                                                  </label>
                                              </div>
                                          </div>
                                      </div>
-                                     <div class="control-group js-full-form {{if isQuickForm}}hide{{/if}}">
-                                         <label class="control-label" id="quick-form-city-of-birth-label">City of Birth</label>
+                                     <div class="control-group">
+                                         <label class="control-label" id="edit-form-city-of-birth-label">City of Birth</label>
                                          <div class="controls">
-                                             <input class="span5 " type="text" id="quick-form-city-of-birth" data-model="city" tabindex="5">
+                                             <input class="span5 " type="text" id="edit-form-city-of-birth" data-model="city" tabindex="5">
                                          </div>
                                      </div>
                                      <div class="control-group">
-                                         <label class="control-label" id="quick-form-phone-number-label"><span class="validation-required-prefix">*</span>Phone Number</label>
+                                         <label class="control-label" id="edit-form-phone-number-label"><span class="validation-required-prefix">*</span>Phone Number</label>
                                          <div class="controls">
-                                             <input type="text" class="span5" id="quick-form-phone-number" data-model="phoneNumber" data-field='phoneNumber' tabindex="7">
+                                             <input type="text" class="span5" id="edit-form-phone-number" data-model="phoneNumber" data-field='phoneNumber' tabindex="7">
                                          </div>
                                      </div>
                                      <div class="control-group">
-                                         <label class="control-label" id="quick-form-attending-physician-label"><span class="validation-required-prefix">*</span>Attending Physician</label>
+                                         <label class="control-label" id="edit-form-attending-physician-label"><span class="validation-required-prefix">*</span>Attending Physician</label>
                                          <div class="controls">
-                                             <input type="text" class="span5" id="quick-form-attending-physician" data-model="attendingPhysician" data-field='attendingPhysician' tabindex="8">
+                                             <input type="text" class="span5" id="edit-form-attending-physician" data-model="attendingPhysician" data-field='attendingPhysician' tabindex="8">
                                          </div>
                                      </div>
-                                     <div class="control-group js-full-form {{if isQuickForm}}hide{{/if}} pad-btm-10">
-                                         <label class="control-label" id="quick-form-address-label"><span class="validation-required-prefix">*</span>Address</label>
+                                     <div class="control-group pad-btm-10">
+                                         <label class="control-label" id="edit-form-address-label"><span class="validation-required-prefix">*</span>Address</label>
                                          <div class="controls pad-btm-10">
-                                             <input type="text" class="span5" id="quick-form-street" data-model="street" data-field='street' tabindex="10" placeholder='Street'>
+                                             <input type="text" class="span5" id="edit-form-street" data-model="street" data-field='street' tabindex="10" placeholder='Street'>
                                          </div>
                                          <div class="controls pad-btm-10">
-                                             <input type="text" class="span5" id="quick-form-zip" data-model="zip" data-field='zip' placeholder='Zip' tabindex="11">
+                                             <input type="text" class="span5" id="edit-form-zip" data-model="zip" data-field='zip' placeholder='Zip' tabindex="11">
                                          </div>
                                          <div class="controls">
-                                             <input type="text" class="span5" id="quick-form-city" data-model="city" data-field='city' placeholder='City' tabindex="12">
+                                             <input type="text" class="span5" id="edit-form-city" data-model="city" data-field='city' placeholder='City' tabindex="12">
                                          </div>
                                      </div>
                                  </fieldset>
@@ -117,21 +117,15 @@
                              <div class="pad-top-10 columnsLargeTiles">
                                  <fieldset>
                                      <div class="control-group">
-                                         <label class="control-label" id="quick-form-expected-registration-label"><span class="validation-required-prefix">*</span>Expected / Registration</label>
+                                         <label class="control-label" id="edit-form-expected-registration-label"><span class="validation-required-prefix">*</span>Expected / Registration</label>
                                              <div class="controls">
-                                                 <input class="span5" type="text" style='margin-top: 8px;' id="quick-form-expected-registration" data-model="intakeDate" tabindex="9">
+                                                 <input class="span5" type="text" style='margin-top: 8px;' id="edit-form-expected-registration" data-model="intakeDate" tabindex="9">
                                              </div>
                                      </div>
-                                     <div class="control-group">
-                                         <label class="control-label pointer" for="quick-form-pre-registered" id="quick-form-pre-registered-label">Create Pre-Registered Encounter</label>
+                                     <div class="control-group" id="edit-form-registration-type-select">
+                                         <label class="control-label" id="edit-form-registration-type-label"><span class="validation-required-prefix">*</span>Registration Type</label>
                                          <div class="controls">
-                                             <input type="checkbox" class="pull-left" style='margin-top: 10px;' id="quick-form-pre-registered" data-model="fullRegisteredAdmitted" tabindex="10">
-                                         </div>
-                                     </div>
-                                     <div class="control-group" id="quick-form-registration-type-select">
-                                         <label class="control-label" id="quick-form-registration-type-label"><span class="validation-required-prefix">*</span>Registration Type</label>
-                                         <div class="controls">
-                                             <select class="span5" id="quick-form-registration-type" name="registrationType" data-model="registrationType" tabindex="11">
+                                             <select class="span5" id="edit-form-registration-type" name="registrationType" data-model="registrationType" tabindex="11">
                                                  <option value="">(Select one)</option>
                                                  <option value="E">One Time</option>
                                                  <option value="R">Recurring</option>
@@ -139,9 +133,9 @@
                                          </div>
                                      </div>
                                      <div class="control-group">
-                                         <label class="control-label" id="quick-form-insurance-name-label"><span class="validation-required-prefix" style="display: none;">*</span>Primary Insurance</label>
+                                         <label class="control-label" id="edit-form-insurance-name-label"><span class="validation-required-prefix" style="display: none;">*</span>Primary Insurance</label>
                                          <div class="controls">
-                                             <select class="span5" id="quick-form-insurance-name" data-model="insuranceName" tabindex="11">
+                                             <select class="span5" id="edit-form-insurance-name" data-model="insuranceName" tabindex="11">
                                                 <option value="ALLNZ">Allianz Ukraine</option>
                                                 <option value="ASKA">ASKA</option>
                                                 <option value="AXA">AXA</option>
@@ -159,47 +153,39 @@
                                          </div>
                                      </div>
                                      <div class="control-group">
-                                         <label class="control-label" id="quick-form-policy-label">Policy # / Member ID</label>
+                                         <label class="control-label" id="edit-form-policy-label">Policy # / Member ID</label>
                                          <div class="controls">
-                                             <input type="text" class="span5" id="quick-form-policy" data-model="policyNumber" tabindex="12">
+                                             <input type="text" class="span5" id="edit-form-policy" data-model="policyNumber" tabindex="12">
                                          </div>
                                      </div>
                                      <div class="control-group">
-                                         <label class="control-label pointer" for="quick-form-same-as-patient" id="quick-form-same-as-patient-label">Insured is Same as Patient</label>
+                                         <label class="control-label" id="edit-form-insureds-name-label"><span class="validation-required-prefix" style="display: inline-block;">*</span>Insured's Name</label>
                                          <div class="controls">
-                                             <input type="checkbox" class="pull-left" style='margin-top: 10px;' id="quick-form-same-as-patient" tabindex="13">
+                                             <input type="text" class="span5" id="edit-form-insureds-name" data-model="insuredName" maxlength="25" tabindex="14">
                                          </div>
                                      </div>
-
                                      <div class="control-group">
-                                         <label class="control-label" id="quick-form-insureds-name-label"><span class="validation-required-prefix" style="display: inline-block;">*</span>Insured's Name</label>
+                                         <label class="control-label" id="edit-form-insureds-gender-label"><span class="validation-required-prefix" style="display: inline-block;">*</span>Insured's Gender</label>
                                          <div class="controls">
-                                             <input type="text" class="span5" id="quick-form-insureds-name" data-model="insuredName" maxlength="25" tabindex="14">
-                                         </div>
-                                     </div>
-
-                                     <div class="control-group">
-                                         <label class="control-label" id="quick-form-insureds-gender-label"><span class="validation-required-prefix" style="display: inline-block;">*</span>Insured's Gender</label>
-                                         <div class="controls">
-                                             <label class="radio inline" id="quick-form-insureds-gender-m-label">
-                                                 <input type="radio" name="quick-form-insureds-gender" value="M" id="quick-form-insureds-gender-m" data-model="insuredGender" tabindex="15">
+                                             <label class="radio inline" id="edit-form-insureds-gender-m-label">
+                                                 <input type="radio" name="edit-form-insureds-gender" value="M" id="edit-form-insureds-gender-m" data-model="insuredGender" tabindex="15">
                                                  Male
                                              </label>
-                                             <label class="radio inline" id="quick-form-insureds-gender-f-label">
-                                                 <input type="radio" name="quick-form-insureds-gender" value="F" id="quick-form-insureds-gender-f" data-model="insuredGender" tabindex="16">
+                                             <label class="radio inline" id="edit-form-insureds-gender-f-label">
+                                                 <input type="radio" name="edit-form-insureds-gender" value="F" id="edit-form-insureds-gender-f" data-model="insuredGender" tabindex="16">
                                                  Female
                                              </label>
-                                             <label class="radio inline" id="quick-form-insureds-gender-u-label">
-                                                 <input type="radio" name="quick-form-insureds-gender" value="U" id="quick-form-insureds-gender-u" data-model="insuredGender" tabindex="17">
+                                             <label class="radio inline" id="edit-form-insureds-gender-u-label">
+                                                 <input type="radio" name="edit-form-insureds-gender" value="U" id="edit-form-insureds-gender-u" data-model="insuredGender" tabindex="17">
                                                  Unknown
                                              </label>
                                           </div>
                                      </div>
 
                                      <div class="control-group">
-                                         <label class="control-label" id="quick-form-insureds-relationship-label"><span class="validation-required-prefix" style="display: inline-block;">*</span>Insured's Relation to Patient</label>
+                                         <label class="control-label" id="edit-form-insureds-relationship-label"><span class="validation-required-prefix" style="display: inline-block;">*</span>Insured's Relation to Patient</label>
                                          <div class="controls">
-                                             <select class="span5" style='margin-top: 8px;' id="quick-form-insureds-relationship" data-model="insuredRelationship" tabindex="18">
+                                             <select class="span5" style='margin-top: 8px;' id="edit-form-insureds-relationship" data-model="insuredRelationship" tabindex="18">
                                                  <option value="">(Select one)</option>
                                                  <option value="G8">G8 - Other Relationship</option>
                                                  <option value="01">01 - Spouse</option>
@@ -244,18 +230,18 @@
                                      </div>
 
                                      <div class="control-group">
-                                         <label class="control-label" id="quick-form-insureds-dob-label"><span class="validation-required-prefix" style="display: none;">*</span>Insured's DOB</label>
+                                         <label class="control-label" id="edit-form-insureds-dob-label"><span class="validation-required-prefix" style="display: none;">*</span>Insured's DOB</label>
                                          <div class="controls">
                                              <div class="input-append">
-                                                 <input class="span5" type="text" id="quick-form-insureds-dob" data-model="insuredDob" data-type="date" tabindex="19">
+                                                 <input class="span5" type="text" id="edit-form-insureds-dob" data-model="insuredDob" data-type="date" tabindex="19">
                                              </div>
                                          </div>
                                      </div>
 
                                      <div class="control-group">
-                                         <label class="control-label pointer" for="quick-form-visit-only" id="quick-form-visit-only-label">This Visit Only</label>
+                                         <label class="control-label pointer" for="edit-form-visit-only" id="edit-form-visit-only-label">This Visit Only</label>
                                          <div class="controls">
-                                             <input type="checkbox" class="pull-left" style='margin-top: 8px;' id="quick-form-visit-only" data-model="visitOnly" tabindex="20">
+                                             <input type="checkbox" class="pull-left" style='margin-top: 8px;' id="edit-form-visit-only" data-model="visitOnly" tabindex="20">
                                          </div>
                                      </div>
                                  </fieldset>

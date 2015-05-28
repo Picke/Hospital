@@ -31,13 +31,14 @@ public class RegistrationController {
         return encounters;
     }
 
-    @RequestMapping(value =  "/encounter/{mrn}/data", method = RequestMethod.GET)
+    @RequestMapping(value =  "/patient/{pcn}/encounter/{ern}/data", method = RequestMethod.GET)
     public
     @ResponseBody
     EncounterFullModel getEncounterData (
+            @PathVariable("pcn") Integer patientId,
             @PathVariable("ern") Integer encounterId) {
-        EncounterFullModel encounterLargeTileModel =  patientService.getEncounterData(encounterId);
-        return encounterLargeTileModel;
+        EncounterFullModel encounterFullModel =  patientService.getEncounterData(encounterId);
+        return encounterFullModel;
     }
 
     @RequestMapping(value =  "/patient/{pcn}/data", method = RequestMethod.GET)

@@ -9,5 +9,9 @@ PR.SDS.Common = (function () {
         return $.get('/registration/patient/' + patientId + '/data', successFn);
     };
 
+    self._loadEncounterData = function (patientId, encounterId, successFn) {
+        return $.get('/registration/patient/' + patientId + '/encounter/' + encounterId + '/data', successFn);
+    };
+
     return self;
 }());

@@ -50,21 +50,20 @@ PR.createNS('PR.Controllers');
             return newEncounterView;
         },
 
-        encounterDetailed: function (patientId, encounterId, tileCode, params) {
-            var encounterDetailedView = new PR.Views.EncounterDetailedView({
+        editEncounter: function (patientId, encounterId, repository) {
+            var editEncounterView = new PR.Views.EditEncounterView({
                 patientId: patientId,
                 encounterId: encounterId,
-                tileCode: tileCode,
-                params: params
+                repository: repository
             });
 
-            encounterDetailedView.render();
+            editEncounterView.render();
 
-            return encounterDetailedView;
+            return editEncounterView;
         },
 
         loadEncounterDetailedTemplates: function(callback) {
-            var templates = PR.require.moduleTemplates.newEncounter;
+            var templates = PR.require.moduleTemplates.encounter;
 
             PR.registerJSRenderTemplates(templates, callback);
         }

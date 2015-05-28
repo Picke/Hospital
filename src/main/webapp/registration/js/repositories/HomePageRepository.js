@@ -25,7 +25,5 @@ PR.Repositories.HomePageRepository = function () {
         return self.patientsData;
     }
 
-    self._loadAllData();
-
     return self;
 }

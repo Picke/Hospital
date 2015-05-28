@@ -16,8 +16,9 @@ PR.require.moduleTemplates = {
 //        "checkInDialog": "/pam/templates/CheckInDialog.tmpl"
     },
 
-    newEncounter: {
+    encounter: {
         "MedicalServicePopup": "templates/MedicalServiceCode.tmpl",
-        "NewEncounterView": "templates/NewEncounter.tmpl"
+        "NewEncounterView": "templates/NewEncounter.tmpl",
+        "EditEncounterView": "templates/EditEncounter.tmpl"
     }
 }

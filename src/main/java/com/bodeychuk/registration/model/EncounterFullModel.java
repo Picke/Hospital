@@ -20,11 +20,12 @@ public class EncounterFullModel {
     private String insuredsGender;
     private String insuredsRelation;
     private String insuredsDOB;
+    private String medicalService;
 
     public EncounterFullModel() {
     }
 
-    public EncounterFullModel(int encounterId, int patientId, String patientName, String patientGender, String patientDOB, String cityOfBirth, String phone, String physician, String street, String zip, String city, String intakeDate, String registrationType, String primaryInsurance, String policyNumber, String insuredsName, String insuredsGender, String insuredsRelation, String insuredsDOB) {
+    public EncounterFullModel(int encounterId, int patientId, String patientName, String patientGender, String patientDOB, String cityOfBirth, String phone, String physician, String street, String zip, String city, String intakeDate, String registrationType, String primaryInsurance, String policyNumber, String insuredsName, String insuredsGender, String insuredsRelation, String insuredsDOB, String medicalService) {
         this.encounterId = encounterId;
         this.patientId = patientId;
         this.patientName = patientName;
@@ -44,6 +45,7 @@ public class EncounterFullModel {
         this.insuredsGender = insuredsGender;
         this.insuredsRelation = insuredsRelation;
         this.insuredsDOB = insuredsDOB;
+        this.medicalService = medicalService;
     }
 
     public int getEncounterId() {
@@ -196,5 +198,13 @@ public class EncounterFullModel {
 
     public void setPatientId(int patientId) {
         this.patientId = patientId;
+    }
+
+    public String getMedicalService() {
+        return medicalService;
+    }
+
+    public void setMedicalService(String medicalService) {
+        this.medicalService = medicalService;
     }
 }

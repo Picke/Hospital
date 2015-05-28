@@ -20,10 +20,6 @@
             this.parentView = options.parentView;
         },
 
-        _loadTemplate: function(callback) {
-            PR.registerJSRenderTemplates(PR.require.moduleTemplates.newEncounter, callback);
-        },
-
         _initModal: function () {
             var html = $.render.medicalServiceCodeTemplate();
             this.setHtml(html);
@@ -51,11 +47,6 @@
             $(this._selectors.closeMedicalServiceCodeButton).on('click', $.proxy(this._closeButtonHandler, this));
         },
 
-        _destroy: function() {
-
-//            this.remove();
-        },
-
         _preDestroy: function() {
             this._destroy();
             if (this.parentView) {
@@ -64,11 +55,9 @@
         },
 
         render: function () {
-            this._loadTemplate($.proxy(function() {
-                this._initModal();
-                this.$el = $(this._selector);
-                this._postRender();
-            }, this));
+            this._initModal();
+            this.$el = $(this._selector);
+            this._postRender();
             return this;
         }
     });

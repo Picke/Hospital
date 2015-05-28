@@ -55,6 +55,7 @@ PR.Views.HomePageView = PR.Views.BaseView.extend({
                 "</div></a></div>"
 
             $(patientListEl).html(html);
+            $(patientListEl).hide().fadeIn('slow');
         });
     },
 

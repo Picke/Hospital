@@ -27,6 +27,7 @@
     <script src="/registration/js/views/GlobalNavView.js" type="text/javascript"></script>
     <script src="/registration/js/views/MedicalServiceCodeView.js" type="text/javascript"></script>
     <script src="/registration/js/views/NewEncounterView.js" type="text/javascript"></script>
+    <script src="/registration/js/views/EditEncounterView.js" type="text/javascript"></script>
 
     <script src="/registration/js/lib/jquery.inputmask.js" type="text/javascript"></script>
 
@@ -37,6 +38,7 @@
 
     <script src="/registration/js/repositories/HomePageRepository.js" type="text/javascript"></script>
     <script src="/registration/js/repositories/NewEncounterRepository.js" type="text/javascript"></script>
+    <script src="/registration/js/repositories/EditEncounterRepository.js" type="text/javascript"></script>
     <script src="/registration/js/controllers/HomePageController.js" type="text/javascript"></script>
     <script src="/registration/js/controllers/EncounterController.js" type="text/javascript"></script>
     <script src="/registration/js/App_Config.js" type="text/javascript"></script>

@@ -58,5 +58,8 @@
         <property name="insuredsDOB" type="string">
             <column name="insuredsDOB" length="45" />
         </property>
+        <property name="medicalService" type="string">
+            <column name="medicalService" length="45" />
+        </property>
     </class>
 </hibernate-mapping>
