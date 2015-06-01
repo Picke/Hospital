@@ -16,7 +16,7 @@ PR.App = function () {
             routes: {
                 "new-encounter": "newEncounter",
                 "new-encounter/:patientId": "newEncounter",
-                "encounter/:patientId/:encounterId/:tileCode": "editEncounter",
+                "encounter/:patientId/:encounterId": "editEncounter",
                 "*path": "home",
                 "*path/:tab": "home"
             },
@@ -56,7 +56,7 @@ PR.App = function () {
                     this._preDestroyCurrentView();
                     homePageView.render();
                     this._routeChanged({view: homePageView, routeHandler: "patientList"});
-                    this.navigate('#patientList');
+                    this.navigate('#patientList', {trigger: true});
                 }, this));
 
             },

@@ -50,16 +50,36 @@ public class RegistrationController {
         return encounterFullModel;
     }
 
+    @RequestMapping(value =  "/patient/{pcn}/encounter/{ern}/update", method = RequestMethod.POST, consumes="application/json")
+    public
+    @ResponseBody
+    EncounterFullModel updateEncounterData (
+            @PathVariable("pcn") Integer patientId,
+            @PathVariable("ern") Integer encounterId,
+            @RequestBody EncounterFullModel encounterFullModel)
+    {
+        patientService.updateEncounter(encounterId, encounterFullModel);
+        return encounterFullModel;
+    }
+
     @RequestMapping(value =  "/patient/{pcn}/save", method = RequestMethod.POST, consumes="application/json")
     public
     @ResponseBody
     EncounterFullModel addEncounter (
             @PathVariable("pcn") Integer patientId,
-            @RequestBody EncounterFullModel encounterLargeTileModel)
+            @RequestBody EncounterFullModel encounterFullModel)
             {
-        patientService.addEncounter(patientId, encounterLargeTileModel);
-        return encounterLargeTileModel;
+        patientService.addEncounter(patientId, encounterFullModel);
+        return encounterFullModel;
     }
 
-
+    @RequestMapping(value =  "/patient/save", method = RequestMethod.POST, consumes="application/json")
+    public
+    @ResponseBody
+    EncounterFullModel createPatient (
+            @RequestBody EncounterFullModel encounterFullModel)
+    {
+        patientService.createPatient(encounterFullModel);
+        return encounterFullModel;
+    }
 }

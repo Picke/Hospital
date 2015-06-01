@@ -13,6 +13,10 @@ PR.Repositories.EditEncounterRepository = function () {
         });
     };
 
+    self._updateEncounter = function (data, successFn) {
+        return PR.SDS._updateEncounter(data, successFn);
+    };
+
     self._getEncounterData = function () {
         return self.encounterData;
     }

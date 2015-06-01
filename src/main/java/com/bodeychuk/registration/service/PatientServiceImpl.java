@@ -8,9 +8,7 @@ import com.bodeychuk.registration.model.Patient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 @Service
 public class PatientServiceImpl implements PatientService {
@@ -44,11 +42,28 @@ public class PatientServiceImpl implements PatientService {
 
     @Override
     public void addEncounter(int patientId, EncounterFullModel encounterFullModel) {
-        patientDao.addEncounterDetails(patientId, encounterFullModel);
+        patientDao.addEncounterDetails(encounterFullModel);
         Encounter encounter = new Encounter(encounterFullModel.getEncounterId(), encounterFullModel.getPatientName(), encounterFullModel.getPhone(),
                 encounterFullModel.getPatientDOB(), encounterFullModel.getIntakeDate());
         encounter.setPatientId(patientId);
         patientDao.addEncounter(encounter);
     }
+
+    @Override
+    public void createPatient(EncounterFullModel encounterFullModel) {
+        encounterFullModel.setPatientId(patientDao.generatePatientId());
+        addEncounter(encounterFullModel.getPatientId(), encounterFullModel);
+    }
+
+    @Override
+    public void updateEncounter(int encounterId, EncounterFullModel encounterFullModel) {
+        patientDao.updateEncounterDetails(encounterId, encounterFullModel);
+        Encounter encounter = new Encounter(encounterFullModel.getEncounterId(), encounterFullModel.getPatientName(), encounterFullModel.getPhone(),
+                encounterFullModel.getPatientDOB(), encounterFullModel.getIntakeDate());
+        encounter.setPatientId(encounterFullModel.getPatientId());
+        patientDao.updateEncounter(encounter);
+
+    }
+
 
 }

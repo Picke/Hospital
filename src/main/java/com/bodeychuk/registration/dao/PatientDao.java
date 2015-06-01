@@ -10,6 +10,9 @@ public interface PatientDao {
     List<Patient> getAllPatients();
     EncounterFullModel getEncounterByEncounterId(int encounterId);
     int getEncounterIdByPatientId(int patientId);
-    void addEncounterDetails(int patientId, EncounterFullModel encounterFullModel);
+    int generatePatientId();
+    void addEncounterDetails(EncounterFullModel encounterFullModel);
     void addEncounter(Encounter encounter);
+    void updateEncounterDetails(int encounterId, EncounterFullModel encounterFullModel);
+    void updateEncounter(Encounter encounter);
 }

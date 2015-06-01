@@ -10,4 +10,6 @@ public interface PatientService {
     EncounterFullModel getEncounterData(int encounterId);
     EncounterFullModel getPatientData(int patientId);
     void addEncounter(int patientId, EncounterFullModel encounterFullModel);
+    void createPatient(EncounterFullModel encounterFullModel);
+    void updateEncounter(int encounterId, EncounterFullModel encounterFullModel);
 }

@@ -43,12 +43,13 @@ PR.Views.HomePageView = PR.Views.BaseView.extend({
         var patientListEl = this._selectors.patientList;
         var html = "";
         $.each(this._repository._getPatientsData(), function (index, encounter) {
+            var dob = encounter.patientDob ? encounter.patientDob : 'unknown';
             html += "<div class='row pad-top-20' data-encounterid=" + encounter.encounterId + " data-patientid=" + encounter.patientId + ">" +
-                "<a href ='#encounter/" + encounter.patientId + "/" + encounter.encounterId + "/PD' style='display:inline-block' >" +
+                "<a href ='#encounter/" + encounter.patientId + "/" + encounter.encounterId + "' style='display:inline-block;width: 800px' >" +
                 "<div class='row'><h2 class='js-patient-name' style='display:inline-block'>" + encounter.patientName + "</h2><button class='btn pull-right pad-top-10 js-add-encounter'>Add encounter</button></div>" +
                 "<div class='row'> <div style='display: inline-block' class='patient-list-data'>PCN: " + encounter.patientId + "</div>" +
                 "<div style='display: inline-block' class='patient-list-data'>ERN: " + encounter.encounterId + "</div>" +
-                "<div style='display: inline-block' class='patient-list-data'>DOB: " + encounter.patientDob + "</div>" +
+                "<div style='display: inline-block' class='patient-list-data'>DOB: " + dob + "</div>" +
                 "<div style='display: inline-block' class='patient-list-data'>Phone: " + encounter.patientPhone + "</div>" +
                 "<div style='display: inline-block' class='patient-list-data'>Service: " + "Outpatient" + "</div>" +
                 "<div style='display: inline-block' class='patient-list-data'>Registered: " + encounter.registrationDate + "</div>" +

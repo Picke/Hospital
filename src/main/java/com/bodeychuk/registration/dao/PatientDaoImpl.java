@@ -12,6 +12,7 @@ import java.util.List;
 @Transactional
 public class PatientDaoImpl implements PatientDao {
     private final String GET_ENCOUNTER_ID_BY_PATIENT_ID = "SELECT encounterId FROM patients WHERE patientId=?";
+    private final String GET_MAX_PATIENT_ID = "SELECT MAX(patientId) FROM patients";
     private final String ADD_ENCOUNTER_TO_PATIENT = "INSERT INTO patients VALUES (?, ?) ";
 
     @Autowired
@@ -42,7 +43,12 @@ public class PatientDaoImpl implements PatientDao {
     }
 
     @Override
-    public void addEncounterDetails(int patientId, EncounterFullModel encounterFullModel) {
+    public int generatePatientId() {
+        return (Integer) sessionFactory.getCurrentSession().createSQLQuery(GET_MAX_PATIENT_ID).list().get(0) + 1;
+    }
+
+    @Override
+    public void addEncounterDetails(EncounterFullModel encounterFullModel) {
         encounterFullModel.setEncounterId((Integer) sessionFactory.getCurrentSession().save(encounterFullModel));
     }
 
@@ -52,5 +58,14 @@ public class PatientDaoImpl implements PatientDao {
         sessionFactory.getCurrentSession().save(encounter);
     }
 
+    @Override
+    public void updateEncounterDetails(int encounterId, EncounterFullModel encounterFullModel) {
+        sessionFactory.getCurrentSession().update(encounterFullModel);
+    }
+
+    @Override
+    public void updateEncounter(Encounter encounter) {
+        sessionFactory.getCurrentSession().update(encounter);
+    }
 
 }

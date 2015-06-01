@@ -3,6 +3,8 @@ PR.Views.EditEncounterView = PR.Views.BaseView.extend({
     _patientId: null,
     _encounterId: null,
     _repository: null,
+    saveObject: {},
+    saveModel: null,
 
     _selectors: {
         editEncounterForm: '#edit-encounter-form',
@@ -47,7 +49,7 @@ PR.Views.EditEncounterView = PR.Views.BaseView.extend({
     },
 
     _postRender: function () {
-        this.eventsPublisher.on('encounterData:loaded', $.proxy(function () {
+        this.eventsPublisher.off().on('encounterData:loaded', $.proxy(function () {
             this.renderForm();
             $(this._selectors.fields.name).focus();
             this.applySelect2ToInsuranceField();
@@ -55,7 +57,7 @@ PR.Views.EditEncounterView = PR.Views.BaseView.extend({
             this.setFieldsValues();
             this.setRadioValues();
             this.initEventHandlers();
-            $(this._selectors.saveButton).on('click', $.proxy(this._onSaveClicked, this));
+            $(this._selectors.saveButton).off().on('click', $.proxy(this._onSaveClicked, this));
         }, this))
     },
 
@@ -83,7 +85,7 @@ PR.Views.EditEncounterView = PR.Views.BaseView.extend({
     },
 
     initEventHandlers: function () {
-        $(this._selectors.unknownDobCheckbox).on('click', $.proxy(function (e) {
+        $(this._selectors.unknownDobCheckbox).off().on('click', $.proxy(function (e) {
             $(e.target).is(':checked') ?
                 $(this._selectors.fields.patientDOB).prop('disabled', true) :
                 $(this._selectors.fields.patientDOB).prop('disabled', false);
@@ -122,7 +124,7 @@ PR.Views.EditEncounterView = PR.Views.BaseView.extend({
 
     getFieldsValues: function () {
         _.each(this._selectors.fields, function (el, prop) {
-            if ($(el).is(':visible')) {
+            if ($(el).is(':visible') || prop == 'primaryInsurance') {
                 this.saveObject[prop] = $(el).val();
             }
         }, this)
@@ -138,9 +140,11 @@ PR.Views.EditEncounterView = PR.Views.BaseView.extend({
         this.getFieldsValues();
         this.getRadioValues();
         this.saveObject['patientId'] = this._patientId;
+        this.saveObject['encounterId'] = this._encounterId;
+        this.saveObject['medicalService'] = $(this._selectors.medicalService).val();
         this.saveModel = new PR.Models.EncounterModel(this.saveObject);
-        this._repository._saveEncounter({patientId: this._patientId, model: this.saveModel}, $.proxy(function (data) {
-            PR.controller.navigate('encounter/' + data.encounterId + '/' + data.patientId);
+        this._repository._updateEncounter({patientId: this._patientId, encounterId: this._encounterId, model: this.saveModel}, $.proxy(function (data) {
+            PR.controller.editEncounter(this._patientId, this._encounterId);
         }, this));
     }
 })

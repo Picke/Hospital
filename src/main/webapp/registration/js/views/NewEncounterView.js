@@ -151,7 +151,7 @@ PR.Views.NewEncounterView = PR.Views.BaseView.extend({
 
     getFieldsValues: function () {
         _.each(this._selectors.fields, function (el, prop) {
-            if ($(el).is(':visible')) {
+            if ($(el).is(':visible') || prop == 'primaryInsurance') {
                 this.saveObject[prop] = $(el).val();
             }
         }, this)
@@ -170,7 +170,7 @@ PR.Views.NewEncounterView = PR.Views.BaseView.extend({
         this.saveObject['medicalService'] = this._medicalService;
         this.saveModel = new PR.Models.EncounterModel(this.saveObject);
         this._repository._saveEncounter({patientId: this._patientId, model: this.saveModel}, $.proxy(function (data) {
-            PR.controller.navigate('encounter/' + data.encounterId + '/' + data.patientId);
+            PR.controller.navigate('#encounter/' + data.patientId + '/' + data.encounterId, {trigger:true});
         }, this));
     }
 })
