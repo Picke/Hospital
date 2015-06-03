@@ -46,8 +46,11 @@
 </head>
 <body>
 <div id="container" class="container">
-    <div class="row">
-        <div id="ErrorBar"></div>
+    <div id="error-alert" style="display: none" class="alert alert-danger alert-dismissable">
+        <a class="close" onclick="hideAlert()">x</a>
+    </div>
+    <div id="success-alert" style="display: none" class="alert alert-success alert-dismissable">
+        <a class="close" onclick="hideAlert()">x</a>
     </div>
     <div id="headercontainer" class="row pad-btm-10"></div>
     <div id="toolbar" class="row pad-btm-10"></div>
@@ -63,6 +66,10 @@
     $('#add-patient-btn').on('click', function () {
         PR.controller.navigate('#new-encounter', {trigger: true});
     });
+
+    var hideAlert = function () {
+        $(".alert").slideUp("slow");
+    }
 </script>
 
 

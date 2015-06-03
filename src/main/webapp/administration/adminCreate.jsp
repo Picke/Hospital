@@ -9,7 +9,6 @@
 <body>
 <div id="error-alert" style="display: none" class="alert alert-danger alert-dismissable">
     <a class="close" onclick="hideAlert()">x</a>
-
 </div>
 <c:if test="${not empty username}">
     <div class="alert alert-success alert-dismissable">

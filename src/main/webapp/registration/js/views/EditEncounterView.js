@@ -90,10 +90,15 @@ PR.Views.EditEncounterView = PR.Views.BaseView.extend({
                 $(this._selectors.fields.patientDOB).prop('disabled', true) :
                 $(this._selectors.fields.patientDOB).prop('disabled', false);
             $(this._selectors.fields.patientDOB).val('');
+            $(this._selectors.fields.patientDOB).closest('.control-group').removeClass('error');
         }, this))
         $('input[type=text]')
             .focusout(this.onChangeFieldInfo)
             .keyup(this.onChangeFieldInfo);
+        $('select').change(this.onChangeFieldInfo);
+        $('input[type=radio]').on('click', function () {
+            $(this).closest('.control-group').removeClass('error');
+        });
     },
 
     onChangeFieldInfo: function () {
@@ -136,15 +141,52 @@ PR.Views.EditEncounterView = PR.Views.BaseView.extend({
         }, this)
     },
 
+    validateFieldValues: function () {
+        var isValid = true;
+        var $controlGroupEl;
+        _.each(this._selectors.fields, function (el) {
+            $controlGroupEl = $(el).closest('.control-group');
+            if ($controlGroupEl.find('.validation-required-prefix').is(':visible') && $(el).val() == '' && !$(el).is(':disabled')) {
+                $controlGroupEl.addClass('error');
+                isValid = false;
+            }
+        })
+        return isValid;
+    },
+
+    validateRadioValues: function () {
+        var isValid = true;
+        var $controlGroupEl;
+        _.each(this._selectors.radio, function (el) {
+            $controlGroupEl = $('input[name=' + el + ']').closest('.control-group');
+            if ($controlGroupEl.find('span').is(':visible') && !$('input[name=' + el + ']:checked').val()) {
+                $controlGroupEl.addClass('error');
+                isValid = false;
+            }
+        })
+        return isValid;
+    },
+
+    validate: function () {
+        var isValidFieldValues = this.validateFieldValues();
+        var isValidRadioValues = this.validateRadioValues();
+        return isValidFieldValues && isValidRadioValues;
+    },
+
     _onSaveClicked: function () {
-        this.getFieldsValues();
-        this.getRadioValues();
-        this.saveObject['patientId'] = this._patientId;
-        this.saveObject['encounterId'] = this._encounterId;
-        this.saveObject['medicalService'] = $(this._selectors.medicalService).val();
-        this.saveModel = new PR.Models.EncounterModel(this.saveObject);
-        this._repository._updateEncounter({patientId: this._patientId, encounterId: this._encounterId, model: this.saveModel}, $.proxy(function (data) {
-            PR.controller.editEncounter(this._patientId, this._encounterId);
-        }, this));
+        if (this.validate()) {
+            this.getFieldsValues();
+            this.getRadioValues();
+            this.saveObject['patientId'] = this._patientId;
+            this.saveObject['encounterId'] = this._encounterId;
+            this.saveObject['medicalService'] = $(this._selectors.medicalService).val();
+            this.saveModel = new PR.Models.EncounterModel(this.saveObject);
+            this._repository._updateEncounter({patientId: this._patientId, encounterId: this._encounterId, model: this.saveModel}, $.proxy(function () {
+                PR.controller.editEncounter(this._patientId, this._encounterId);
+                PR.Utils.showSuccessAlert('Encounter saved successfully');
+            }, this));
+            return;
+        }
+        PR.Utils.showErrorAlert('Please fill all required fields');
     }
 })

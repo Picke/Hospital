@@ -162,3 +162,15 @@ PR.Utils.maskInput = function (inputEl) {
     var mask = "99/99/9999";
     inputEl.inputmask('mask', _.extend({mask: mask}));
 };
+
+PR.Utils.showSuccessAlert = function (message) {
+    var $alertWidgetEl = $('#success-alert');
+    $alertWidgetEl.html('<a class="close" onclick="hideAlert()">x</a>');
+    $alertWidgetEl.show().append(message);
+};
+
+PR.Utils.showErrorAlert = function (message) {
+    var $alertWidgetEl = $('#error-alert');
+    $alertWidgetEl.html('<a class="close" onclick="hideAlert()">x</a>');
+    $alertWidgetEl.show().append(message);
+}

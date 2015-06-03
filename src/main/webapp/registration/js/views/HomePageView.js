@@ -28,7 +28,7 @@ PR.Views.HomePageView = PR.Views.BaseView.extend({
         $(this._selectors.createPatientButton).on("click", function () {
             PR.controller.navigate("#new-encounter", {trigger: true});
         });
-        this.eventsPublisher.on('dataReady', $.proxy(function () {
+        this.eventsPublisher.reinitializeEvent('dataReady', $.proxy(function () {
             this._buildPatientList();
             $(this._selectors.addEncounterButton).on("click", function (e) {
                 e.preventDefault();
