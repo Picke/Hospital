@@ -9,12 +9,22 @@
 <html>
 <head>
     <title></title>
+    <script src="../dependencies/jquery/jquery-latest.js"></script>
 </head>
 <body>
 <div class="row pad-btm-10">
-    <a class="pull-right pad-top-10" href="/j_spring_security_logout">Logout</a>
+    <a class="pull-right pad-top-10" id="logout" href="/j_spring_security_logout">Logout</a>
 
     <div class="span16"><h1 class="pull-left">administration panel</h1></div>
 </div>
 </body>
+
+<script type="text/javascript">
+    var includeContextPath = function () {
+        $('#logout').attr('href','<%=request.getContextPath()%>' + $('#logout').attr('href'));
+    };
+
+    includeContextPath();
+</script>
+
 </html>

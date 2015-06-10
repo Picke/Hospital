@@ -4,7 +4,11 @@ PR.Views.GlobalNavView = function () {
 
     self.render = function () {
         var $container = $('#headercontainer');
-        var html = $.render.globalNavTemplate();
+        var contextPath = ''
+        if (window.location.pathname.split('/').length > 3) {
+            contextPath = window.location.pathname.split('/')[1]
+        }
+        var html = $.render.globalNavTemplate({contextPath: contextPath});
         $container.html(html);
 
         return self;

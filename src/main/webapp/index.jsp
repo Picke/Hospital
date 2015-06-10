@@ -3,8 +3,8 @@
 <head>
     <title>HOSPITAL</title>
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <link href="/resources/common/bootstrap/css/custom-bootstrap.css" rel="stylesheet" type="text/css">
-    <script src="/dependencies/jquery/jquery-latest.js"></script>
+    <link href="./resources/common/bootstrap/css/custom-bootstrap.css" rel="stylesheet" type="text/css">
+    <script src="./dependencies/jquery/jquery-latest.js"></script>
 
     <style type="text/css">
         html {
@@ -31,7 +31,7 @@
             text-indent: -10000em;
             width: 200px;
             height: 227px;
-            background: url(/resources/common/bootstrap/img/hospital-logo.png) no-repeat;
+            background: url(./resources/common/bootstrap/img/hospital-logo.png) no-repeat;
             margin: 0;
         }
 
@@ -150,6 +150,16 @@
 
 </body>
 
+<script type="text/javascript">
+    var includeContextPath = function () {
+        $('#logout').attr('href','<%=request.getContextPath()%>' + $('#logout').attr('href'));
+        $('#logonForm').attr('action','<%=request.getContextPath()%>' + $('#logonForm').attr('action'));
+    };
+
+    includeContextPath();
+</script>
+
+
 <c:if test="${not empty roles}">
 <script type="text/javascript">
     var init = function () {
@@ -164,8 +174,9 @@
     };
 
     var navigate = function () {
-        var path = $('#userRoles').val() == "Admin" ? "/administration" : "/registration/#";
-        window.location.href = window.location.origin + path
+        var contextPath = '<%=request.getContextPath()%>';
+        var path =  $('#userRoles').val() == "Admin" ? "/administration" : "/registration/#";
+        window.location.href = window.location.origin + contextPath + path;
     };
 
     init();

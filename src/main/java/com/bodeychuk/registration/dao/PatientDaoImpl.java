@@ -44,7 +44,8 @@ public class PatientDaoImpl implements PatientDao {
 
     @Override
     public int generatePatientId() {
-        return (Integer) sessionFactory.getCurrentSession().createSQLQuery(GET_MAX_PATIENT_ID).list().get(0) + 1;
+        Integer lastPatientId = (Integer) sessionFactory.getCurrentSession().createSQLQuery(GET_MAX_PATIENT_ID).list().get(0);
+        return lastPatientId == null ? 100000 : lastPatientId + 1;
     }
 
     @Override

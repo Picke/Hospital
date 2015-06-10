@@ -2,46 +2,46 @@
 <html>
 <head>
     <title>Hospital</title>
-    <link href="/resources/registration/bootstrap/css/custom-registration.css" rel="stylesheet" type="text/css">
+    <link href="../resources/registration/bootstrap/css/custom-registration.css" rel="stylesheet" type="text/css">
     <link rel="shortcut icon" href="/resources/images/favicon.ico" type="image/x-icon" />
 
-    <script src="/dependencies/jquery/jquery-latest.js" type="text/javascript"></script>
-    <script src="/dependencies/underscore/underscore.js" type="text/javascript"></script>
-    <script src="/dependencies/backbone/backbone.js" type="text/javascript"></script>
-    <script src="/dependencies/jsRender/jsrender.js" type="text/javascript"></script>
-    <script src="/dependencies/eventEmitter/EventEmitter.js" type="text/javascript"></script>
-    <script src="/dependencies/bootstrap/bootstrap-modal.js" type="text/javascript"></script>
-    <script src="/dependencies/select2/select2.js" type="text/javascript"></script>
+    <script src="../dependencies/jquery/jquery-latest.js" type="text/javascript"></script>
+    <script src="../dependencies/underscore/underscore.js" type="text/javascript"></script>
+    <script src="../dependencies/backbone/backbone.js" type="text/javascript"></script>
+    <script src="../dependencies/jsRender/jsrender.js" type="text/javascript"></script>
+    <script src="../dependencies/eventEmitter/EventEmitter.js" type="text/javascript"></script>
+    <script src="../dependencies/bootstrap/bootstrap-modal.js" type="text/javascript"></script>
+    <script src="../dependencies/select2/select2.js" type="text/javascript"></script>
 
-    <script src="/common/js/lib/Namespaces.js" type="text/javascript"></script>
-    <script src="/common/js/lib/PRCore.js" type="text/javascript"></script>
-    <script src="/common/js/lib/PRCore.Utils.js" type="text/javascript"></script>
-    <script src="/common/js/lib/PRCore.Ajax.js" type="text/javascript"></script>
-    <script src="/common/js/lib/PRCore.Templates.js" type="text/javascript"></script>
-    <script src="/common/js/Utils.js" type="text/javascript"></script>
+    <script src="../common/js/lib/Namespaces.js" type="text/javascript"></script>
+    <script src="../common/js/lib/PRCore.js" type="text/javascript"></script>
+    <script src="../common/js/lib/PRCore.Utils.js" type="text/javascript"></script>
+    <script src="../common/js/lib/PRCore.Ajax.js" type="text/javascript"></script>
+    <script src="../common/js/lib/PRCore.Templates.js" type="text/javascript"></script>
+    <script src="../common/js/Utils.js" type="text/javascript"></script>
 
-    <script src="/registration/js/models/EncounterModel.js" type="text/javascript"></script>
+    <script src="../registration/js/models/EncounterModel.js" type="text/javascript"></script>
 
-    <script src="/registration/js/views/BaseView.js" type="text/javascript"></script>
-    <script src="/registration/js/views/HomePageView.js" type="text/javascript"></script>
-    <script src="/registration/js/views/GlobalNavView.js" type="text/javascript"></script>
-    <script src="/registration/js/views/MedicalServiceCodeView.js" type="text/javascript"></script>
-    <script src="/registration/js/views/NewEncounterView.js" type="text/javascript"></script>
-    <script src="/registration/js/views/EditEncounterView.js" type="text/javascript"></script>
+    <script src="../registration/js/views/BaseView.js" type="text/javascript"></script>
+    <script src="../registration/js/views/HomePageView.js" type="text/javascript"></script>
+    <script src="../registration/js/views/GlobalNavView.js" type="text/javascript"></script>
+    <script src="../registration/js/views/MedicalServiceCodeView.js" type="text/javascript"></script>
+    <script src="../registration/js/views/NewEncounterView.js" type="text/javascript"></script>
+    <script src="../registration/js/views/EditEncounterView.js" type="text/javascript"></script>
 
-    <script src="/registration/js/lib/jquery.inputmask.js" type="text/javascript"></script>
+    <script src="../registration/js/lib/jquery.inputmask.js" type="text/javascript"></script>
 
-    <script src="/registration/js/widgets/SDS.js" type="text/javascript"></script>
-    <script src="/registration/js/widgets/SDSCommon.js" type="text/javascript"></script>
+    <script src="../registration/js/widgets/SDS.js" type="text/javascript"></script>
+    <script src="../registration/js/widgets/SDSCommon.js" type="text/javascript"></script>
 
-    <script src="/registration/require.templates.js" type="text/javascript"></script>
+    <script src="../registration/require.templates.js" type="text/javascript"></script>
 
-    <script src="/registration/js/repositories/HomePageRepository.js" type="text/javascript"></script>
-    <script src="/registration/js/repositories/NewEncounterRepository.js" type="text/javascript"></script>
-    <script src="/registration/js/repositories/EditEncounterRepository.js" type="text/javascript"></script>
-    <script src="/registration/js/controllers/HomePageController.js" type="text/javascript"></script>
-    <script src="/registration/js/controllers/EncounterController.js" type="text/javascript"></script>
-    <script src="/registration/js/App_Config.js" type="text/javascript"></script>
+    <script src="../registration/js/repositories/HomePageRepository.js" type="text/javascript"></script>
+    <script src="../registration/js/repositories/NewEncounterRepository.js" type="text/javascript"></script>
+    <script src="../registration/js/repositories/EditEncounterRepository.js" type="text/javascript"></script>
+    <script src="../registration/js/controllers/HomePageController.js" type="text/javascript"></script>
+    <script src="../registration/js/controllers/EncounterController.js" type="text/javascript"></script>
+    <script src="../registration/js/App_Config.js" type="text/javascript"></script>
 
 </head>
 <body>

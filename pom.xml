@@ -4,10 +4,9 @@
         xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.bodeychuk</groupId>
-    <artifactId>Hospital</artifactId>
+    <artifactId>hospital</artifactId>
     <packaging>war</packaging>
-    <version>1.0-SNAPSHOT</version>
-    <name>Hospital</name>
+    <name>hospital</name>
     <url>http://maven.apache.org</url>
 
     <properties>
@@ -148,6 +147,9 @@
     </dependencies>
 
     <build>
+
+        <finalName>${artifactId}</finalName>
+
         <plugins>
 
             <plugin>

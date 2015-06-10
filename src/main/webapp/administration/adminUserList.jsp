@@ -2,10 +2,10 @@
 <html>
 <head>
     <title>Hospital</title>
-    <link href="/resources/admin/bootstrap/css/custom-admin.css" rel="stylesheet" type="text/css">
-    <script src="/dependencies/jquery/jquery-latest.js"></script>
-    <script src="/dependencies/bootstrap-confirmation/bootstrap.js"></script>
-    <script src="/dependencies/bootstrap-confirmation/bootstrap-confirmation.js"></script>
+    <link href="../resources/admin/bootstrap/css/custom-admin.css" rel="stylesheet" type="text/css">
+    <script src="../dependencies/jquery/jquery-latest.js"></script>
+    <script src="../dependencies/bootstrap-confirmation/bootstrap.js"></script>
+    <script src="../dependencies/bootstrap-confirmation/bootstrap-confirmation.js"></script>
 </head>
 <body>
 <div class="container">
@@ -47,18 +47,12 @@
                             "</td></tr>";
             $('#users-table > tbody:last').append(userHTML);
             $($('#users-table > tbody:last > tr:last .btn')[0]).on('click', function () {
-                $(this).confirmation({
-                    animation: true,
-                    onConfirm: function () {
-                        deleteUser(user.username);
-                        var tr = $(this).closest('tr');
-                        tr.fadeOut(400, function () {
-                            tr.remove();
-                        });
-                    }
+                deleteUser(user.username);
+                var tr = $(this).closest('tr');
+                tr.fadeOut(400, function () {
+                    tr.remove();
                 });
             });
-            $($('#users-table > tbody:last > tr:last .btn')[0]).trigger('click');
         });
     };
 
@@ -67,7 +61,8 @@
     };
 
     var cancelButtonHandler = function () {
-        window.location.href = window.location.origin + "/administration"
+        var contextPath = '<%=request.getContextPath()%>';
+        window.location.href = window.location.origin + contextPath + "/administration"
     }
 
     fillTable();

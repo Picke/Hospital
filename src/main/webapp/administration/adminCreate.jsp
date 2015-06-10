@@ -3,8 +3,8 @@
 <html>
 <head>
     <title>Hospital</title>
-    <link href="/resources/admin/bootstrap/css/custom-admin.css" rel="stylesheet" type="text/css">
-    <script src="/dependencies/jquery/jquery-latest.js"></script>
+    <link href="../resources/admin/bootstrap/css/custom-admin.css" rel="stylesheet" type="text/css">
+    <script src="../dependencies/jquery/jquery-latest.js"></script>
 </head>
 <body>
 <div id="error-alert" style="display: none" class="alert alert-danger alert-dismissable">
@@ -104,6 +104,7 @@
 
 <script type="text/javascript">
     var init = function () {
+        $("#create-user-form").attr('action', '<%=request.getContextPath()%>' + $("#create-user-form").attr('action'))
         $("#username").val("");
         $("#password").val("");
         $("#repeat-password").val("");
@@ -111,7 +112,8 @@
     }
 
     var cancelButtonHandler = function () {
-        window.location.href = window.location.origin + "/administration"
+        var contextPath = '<%=request.getContextPath()%>';
+        window.location.href = window.location.origin + contextPath + "/administration"
     }
 
     $("#create-btn").on("click", function () {

@@ -2,7 +2,7 @@
 <html>
 <head>
     <title>Hospital</title>
-    <link href="/resources/admin/bootstrap/css/custom-admin.css" rel="stylesheet" type="text/css">
+    <link href="../resources/admin/bootstrap/css/custom-admin.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <div class="container">

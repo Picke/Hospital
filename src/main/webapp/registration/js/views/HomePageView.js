@@ -28,8 +28,8 @@ PR.Views.HomePageView = PR.Views.BaseView.extend({
         $(this._selectors.createPatientButton).on("click", function () {
             PR.controller.navigate("#new-encounter", {trigger: true});
         });
-        this.eventsPublisher.reinitializeEvent('dataReady', $.proxy(function () {
-            this._buildPatientList();
+        this.eventsPublisher.reinitializeEvent('dataReady', $.proxy(function (patientsData) {
+            this._buildPatientList(patientsData);
             $(this._selectors.addEncounterButton).on("click", function (e) {
                 e.preventDefault();
                 var patientId = $(this).closest('.pad-top-20').data('patientid');
@@ -39,10 +39,10 @@ PR.Views.HomePageView = PR.Views.BaseView.extend({
         $(this._selectors.patientSearch).on('keyup', this._patientSearch)
     },
 
-    _buildPatientList: function () {
+    _buildPatientList: function (patientsData) {
         var patientListEl = this._selectors.patientList;
         var html = "";
-        $.each(this._repository._getPatientsData(), function (index, encounter) {
+        $.each(patientsData, function (index, encounter) {
             var dob = encounter.patientDob ? encounter.patientDob : 'unknown';
             html += "<div class='row pad-top-20' data-encounterid=" + encounter.encounterId + " data-patientid=" + encounter.patientId + ">" +
                 "<a href ='#encounter/" + encounter.patientId + "/" + encounter.encounterId + "' style='display:inline-block;width: 800px' >" +

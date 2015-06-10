@@ -11,7 +11,7 @@ PR.Repositories.HomePageRepository = function () {
 
     self._loadAllData = function () {
         self._loadPatientsData().done(function () {
-            eventsPublisher.publish('dataReady');
+            eventsPublisher.publish('dataReady', self.patientsData);
         });
     };
 
